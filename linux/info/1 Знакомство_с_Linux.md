@@ -1,4 +1,4 @@
-#  01 — Знакомство с Linux
+#   Знакомство с Linux
 
 > **Курс:** Linux Essentials (JavaRush)  
 > **Теги:** #linux #basics #filesystem #cli  

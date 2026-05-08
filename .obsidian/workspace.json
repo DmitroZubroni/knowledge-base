@@ -11,10 +11,14 @@
             "id": "92dbaf841fab23a9",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Граф"
+              "type": "markdown",
+              "state": {
+                "file": "internet networks/info/1 OSI TCPIP.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1 OSI TCPIP"
             }
           }
         ]
@@ -179,10 +183,14 @@
       "bases:Создать новую базу": false
     }
   },
-  "active": "92dbaf841fab23a9",
+  "active": "a89421299ae5e3f1",
   "lastOpenFiles": [
-    "java/main Java.md",
     "internet networks/info/0 general info.md",
+    "java/main Java.md",
+    "linux/info/4 Сеть_и_SSH.md",
+    "linux/info/3 Управление_сервисами_и_bash.md",
+    "linux/info/2 Права_доступа_и_процессы.md",
+    "linux/info/1 Знакомство_с_Linux.md",
     "internet networks/info/5 Devices.md",
     "internet networks/info/4 DHCP.md",
     "internet networks/info/3 DNS.md",
@@ -200,13 +208,9 @@
     "internet networks/03_DNS.md",
     "internet networks/04_DHCP.md",
     "internet networks/05_Devices.md",
-    "linux/info/4 Сеть_и_SSH.md",
-    "linux/info/3 Управление_сервисами_и_bash.md",
     "linux/info/7 Веб_серверы_и_утилиты.md",
     "linux/info/6 Работа_с_устройствами.md",
     "linux/info/5 Основы_безопасности.md",
-    "linux/info/2 Права_доступа_и_процессы.md",
-    "linux/info/1 Знакомство_с_Linux.md",
     "docker/info/5 Docker Compose.md",
     "docker/info",
     "linux/info",

@@ -1,3 +1,0 @@
-[[PostgreSQL]]
-[[MySQL]]
-[[Redis]]

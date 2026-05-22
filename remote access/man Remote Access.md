@@ -1,1 +1,0 @@
-[[Terminal Linux Remote Access]]

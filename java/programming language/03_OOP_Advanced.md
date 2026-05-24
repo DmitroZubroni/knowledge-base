@@ -1,7 +1,7 @@
 # 03 — ООП: Наследование, полиморфизм, интерфейсы
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[02_OOP_Core]] | [[04_OOP_Principles]] | [[08_Functional]] | [[10_SOLID]]
+> [[00_JAVA]] | [[02_OOP_Core]] | [[04_OOP_Principles]] | [[08_Functional]] | [[10_SOLID]]
 
 ---
 

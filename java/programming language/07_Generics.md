@@ -1,7 +1,7 @@
 # 07 — Generics (Обобщения)
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[06_Collections]] | [[08_Functional]] | [[03_OOP_Advanced]]
+> [[00_JAVA]] | [[06_Collections]] | [[08_Functional]] | [[03_OOP_Advanced]]
 
 ---
 

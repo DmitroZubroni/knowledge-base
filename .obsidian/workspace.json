@@ -16,8 +16,35 @@
               "icon": "lucide-git-fork",
               "title": "Граф"
             }
+          },
+          {
+            "id": "fcb6671ed036696d",
+            "type": "leaf",
+            "state": {
+              "type": "diagram-edit",
+              "state": {
+                "file": "Untitled Diagram.svg"
+              },
+              "icon": "lucide-file",
+              "title": "Untitled Diagram.svg"
+            }
+          },
+          {
+            "id": "f77296ff4241fe8b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "main.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "main"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -179,47 +206,47 @@
       "bases:Создать новую базу": false
     }
   },
-  "active": "92dbaf841fab23a9",
+  "active": "f77296ff4241fe8b",
   "lastOpenFiles": [
-    "api/main API.md",
-    "api/OAuth2_JWT.md",
-    "java/programming language/00_INDEX.md",
-    "java/programming language/12_Design_Patterns.md",
-    "tools/main Tools.md",
-    "tools/tools list/GitHub_Actions.md",
-    "java/framework and library/framework/00_Spring_Index.md",
-    "java/framework and library/framework/Spring_Test.md",
-    "tools/tools list/Logging_SLF4J_Logback.md",
-    "tools/tools list/Flyway.md",
-    "tools/tools list/JUnit_Mockito.md",
-    "data base/SQL/SQL.md",
-    "api/Swagger.md",
-    "java/framework and library/library/00_Library.md",
-    "assets/deepseek_mermaid_20260506_190cd7 1.svg",
     "main.md",
-    "linux/main Linux.md",
-    "man Remote Access.md",
-    "linux/terminal/Terminal Linux Remote Access.md",
-    "linux/terminal/comand.md",
-    "remote access/man Remote Access.md",
-    "linux/info/7 Веб_серверы_и_утилиты.md",
+    "java/programming language/00_JAVA.md",
+    "tools/tools list/GitHub_Actions.md",
+    "tools/tools list/Flyway.md",
+    "tools/main Tools.md",
     "data base/main Data Base.md",
-    "data base/SQL/00_SQL_DB.md",
+    "data base/main SQL DB.md",
+    "data base/SQL data base/MySQL/MySQL_Architecture.md",
+    "data base/SQL data base/MySQL/MySQL_Advanced.md",
+    "data base/SQL data base/MySQL/00_MySQL.md",
+    "data base/SQL data base/MySQL/MySQL_DataTypes.md",
+    "data base/SQL data base/MySQL/MySQL_Indexes.md",
+    "data base/SQL data base/MySQL/MySQL_Transactions.md",
+    "data base/SQL data base/MySQL/MySQL_Performance.md",
+    "data base/SQL data base/MySQL",
+    "data base/SQL data base/JDBC_JPA.md",
+    "data base/SQL data base/sql/SQL_DML.md",
+    "data base/SQL data base/sql/SQL_DDL.md",
+    "data base/SQL data base/sql/SQL_Advanced.md",
+    "data base/SQL data base/sql/00_SQL.md",
+    "data base/NOSQL/Redis.md",
+    "data base/NOSQL/Mongo.md",
     "data base/NOSQL/00_NoSQL_DB.md",
-    "api/OpenApi.md",
-    "api/Rest Api.md",
+    "linux/info/3 Управление_сервисами_и_bash.md",
+    "linux/info/2 Права_доступа_и_процессы.md",
+    "linux/info/1 Знакомство_с_Linux.md",
+    "meta/KB.md",
+    "meta",
+    "data base/SQL data base/postgreSQL",
+    "data base/SQL data base/sql",
+    "Untitled Diagram.svg",
+    "Без названия",
+    "assets/deepseek_mermaid_20260506_190cd7 1.svg",
     "api",
     "java/framework and library/library",
     "java/framework and library/framework",
     "tools/tools list",
     "java/framework and library",
-    "tools",
-    "java/info/java_notes",
-    "java/info/java_notes.zip",
-    "java/programming language",
-    "internet networks/info",
     "deepseek_mermaid_20260506_190cd7 1.svg",
-    "deepseek_mermaid_20260506_190cd7.svg",
-    "Untitled Diagram.svg"
+    "deepseek_mermaid_20260506_190cd7.svg"
   ]
 }

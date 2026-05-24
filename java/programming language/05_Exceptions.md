@@ -1,7 +1,7 @@
 # 05 — Исключения (Exceptions)
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[02_OOP_Core]] | [[06_Collections]] | [[09_Multithreading]]
+> [[00_JAVA]] | [[02_OOP_Core]] | [[06_Collections]] | [[09_Multithreading]]
 
 ---
 

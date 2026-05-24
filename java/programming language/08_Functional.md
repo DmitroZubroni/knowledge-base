@@ -1,7 +1,7 @@
 # 08 — Функциональное программирование
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[06_Collections]] | [[07_Generics]] | [[03_OOP_Advanced]]
+> [[00_JAVA]] | [[06_Collections]] | [[07_Generics]] | [[03_OOP_Advanced]]
 
 ---
 

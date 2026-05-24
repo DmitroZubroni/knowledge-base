@@ -1,7 +1,7 @@
 # 01 — Синтаксис и основы Java
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[02_OOP_Core]] | [[11_JVM_Internals]]
+> [[00_JAVA]] | [[02_OOP_Core]] | [[11_JVM_Internals]]
 
 ---
 

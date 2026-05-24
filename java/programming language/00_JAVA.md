@@ -49,6 +49,8 @@
 [[09_Multithreading]]
     ↓
 [[10_SOLID]]
+    ↓
+[[12_Design_Patterns]]
 ```
 
 ---

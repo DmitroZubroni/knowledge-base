@@ -1,7 +1,7 @@
 # 02 — ООП: Классы и объекты
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[01_Basics]] | [[03_OOP_Advanced]] | [[04_OOP_Principles]] | [[11_JVM_Internals]]
+> [[00_JAVA]] | [[01_Basics]] | [[03_OOP_Advanced]] | [[04_OOP_Principles]] | [[11_JVM_Internals]]
 
 ---
 

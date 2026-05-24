@@ -1,4 +1,4 @@
-[[00_SQL_DB]]
+[[main SQL DB]]
 
 ---
 

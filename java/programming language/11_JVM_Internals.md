@@ -1,7 +1,7 @@
 # 11 — JVM Internals
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[01_Basics]] | [[02_OOP_Core]] | [[09_Multithreading]]
+> [[00_JAVA]] | [[01_Basics]] | [[02_OOP_Core]] | [[09_Multithreading]]
 
 ---
 

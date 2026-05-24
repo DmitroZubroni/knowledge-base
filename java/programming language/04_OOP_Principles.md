@@ -1,7 +1,7 @@
 # 04 — Пакеты, static, final, enum
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[02_OOP_Core]] | [[03_OOP_Advanced]] | [[10_SOLID]]
+> [[00_JAVA]] | [[02_OOP_Core]] | [[03_OOP_Advanced]] | [[10_SOLID]]
 
 ---
 

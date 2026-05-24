@@ -1,7 +1,7 @@
 # 06 — Коллекции (Collections)
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[07_Generics]] | [[08_Functional]] | [[05_Exceptions]]
+> [[00_JAVA]] | [[07_Generics]] | [[08_Functional]] | [[05_Exceptions]]
 
 ---
 

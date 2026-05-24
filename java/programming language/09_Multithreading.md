@@ -1,7 +1,7 @@
 # 09 — Многопоточность (Multithreading)
 
 > [!abstract] Связи
-> [[00_INDEX]] | [[05_Exceptions]] | [[06_Collections]] | [[08_Functional]]
+> [[00_JAVA]] | [[05_Exceptions]] | [[06_Collections]] | [[08_Functional]]
 
 ---
 

@@ -1,7 +1,9 @@
 # Spring — Data JPA (Repository, Query, Transactions)
 
+> **Теги:** #spring #framework #jpa #middle #конспект  
+
 > [!abstract] Связи
-> [[00_Spring_Index]] | [[Hibernate]] | [[Spring_Boot]] | [[JDBC_JPA]]
+> [[main]] | [[main Java]] | [[00_Spring_Index]]
 
 ---
 

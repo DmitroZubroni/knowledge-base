@@ -1,7 +1,9 @@
 # 04 — Пакеты, static, final, enum
 
+> **Теги:** #java #programming #static #enum #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[02_OOP_Core]] | [[03_OOP_Advanced]] | [[10_SOLID]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

@@ -1,7 +1,9 @@
 # SQL DDL — Data Definition Language
 
+> **Теги:** #sql #database #ddl #конспект  
+
 > [!abstract] Связи
-> [[00_SQL]] | [[SQL_DML]] | [[SQL_Joins]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_SQL]]
 
 DDL — команды для определения и изменения **структуры** базы данных: таблицы, схемы, индексы, ограничения.
 

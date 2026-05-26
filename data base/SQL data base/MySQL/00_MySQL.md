@@ -1,5 +1,10 @@
 # 00 — MySQL Hub
 
+> **Теги:** #mysql #hub #database  
+
+> [!abstract] Навигация
+> [[main]] | [[main Data Base]] | [[main SQL DB]]
+
 ## 🔹 Структура раздела
 
 | Файл | Содержание |

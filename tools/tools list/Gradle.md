@@ -1,7 +1,9 @@
 # Gradle
 
+> **Теги:** #tools #gradle #конспект  
+
 > [!abstract] Связи
-> [[main Tools]] | [[Spring_Boot]]
+> [[main]] | [[main Tools]]
 
 ---
 

@@ -1,3 +1,11 @@
+# main API
+
+> **Теги:** #api #hub #layer-main  
+
+> [!abstract] Навигация
+> [[main]]
+
+---
 
 [[Rest Api]]
 

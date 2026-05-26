@@ -1,5 +1,10 @@
 # Spring — Index
 
+> **Теги:** #spring #hub #framework  
+
+> [!abstract] Навигация
+> [[main]] | [[main Java]]
+
 ## 🗺️ Карта файлов
 
 | Файл | Тема | Уровень |

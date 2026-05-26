@@ -1,7 +1,9 @@
 # Jackson (JSON)
 
+> **Теги:** #java #library #json #конспект  
+
 > [!abstract] Связи
-> [[00_Library]] | [[Spring_Web_REST]]
+> [[main]] | [[main Java]] | [[00_Library]]
 
 ---
 

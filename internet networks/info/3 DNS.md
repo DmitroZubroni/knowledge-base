@@ -1,5 +1,10 @@
 #  DNS — Domain Name System
 
+> **Теги:** #networks #dns #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Internet Networks]]
+
 > [!abstract] Суть одной строкой
 > DNS — это **телефонная книга интернета**. Переводит человекочитаемые адреса (`youtube.com`) в машинные IP-адреса (`172.217.7.206`).
 

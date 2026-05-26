@@ -1,7 +1,9 @@
 # PG Advanced — Партиционирование, Репликация, Расширения
 
+> **Теги:** #postgresql #database #advanced #конспект  
+
 > [!abstract] Связи
-> [[00_PostgreSQL]] | [[PG_Architecture]] | [[PG_Performance]] | [[PG_Transactions]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
 
 ---
 

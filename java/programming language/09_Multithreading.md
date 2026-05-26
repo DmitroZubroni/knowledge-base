@@ -1,7 +1,9 @@
 # 09 — Многопоточность (Multithreading)
 
+> **Теги:** #java #programming #concurrency #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[05_Exceptions]] | [[06_Collections]] | [[08_Functional]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

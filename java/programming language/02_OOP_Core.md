@@ -1,7 +1,9 @@
 # 02 — ООП: Классы и объекты
 
+> **Теги:** #java #programming #oop #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[01_Basics]] | [[03_OOP_Advanced]] | [[04_OOP_Principles]] | [[11_JVM_Internals]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

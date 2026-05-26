@@ -1,7 +1,9 @@
 # 07 — Generics (Обобщения)
 
+> **Теги:** #java #programming #generics #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[06_Collections]] | [[08_Functional]] | [[03_OOP_Advanced]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

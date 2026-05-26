@@ -1,7 +1,9 @@
 # 📄 Docker  Dockerfile
 
-> **Теги:** #docker #dockerfile #build #image  
-> **Статус:** #изучено
+> **Теги:** #docker #dockerfile #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Docker]]
 
 ---
 

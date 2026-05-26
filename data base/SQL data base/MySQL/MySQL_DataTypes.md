@@ -1,7 +1,9 @@
 # MySQL DataTypes — Типы данных MySQL
 
+> **Теги:** #mysql #database #datatypes #конспект  
+
 > [!abstract] Связи
-> [[00_MySQL]] | [[MySQL_Architecture]] | [[MySQL_Indexes]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_MySQL]]
 
 ---
 

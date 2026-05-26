@@ -1,7 +1,9 @@
 # 05 — Исключения (Exceptions)
 
+> **Теги:** #java #programming #exceptions #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[02_OOP_Core]] | [[06_Collections]] | [[09_Multithreading]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

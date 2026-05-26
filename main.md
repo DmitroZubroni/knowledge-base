@@ -1,7 +1,9 @@
 # 🧠 Knowledge Base
 
+> **Теги:** #kb #hub #root  
+
 > [!abstract] Навигация
-> Корневой файл. Все разделы ниже.
+> [[main Java]] | [[main Data Base]] | [[main API]] | [[main Tools]] | [[main Docker]] | [[main Linux]] | [[main Internet Networks]]
 
 ---
 

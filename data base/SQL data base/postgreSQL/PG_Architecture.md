@@ -1,7 +1,9 @@
 # PG Architecture — Архитектура PostgreSQL
 
+> **Теги:** #postgresql #database #architecture #конспект  
+
 > [!abstract] Связи
-> [[00_PostgreSQL]] | [[PG_Transactions]] | [[PG_Performance]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
 
 ---
 

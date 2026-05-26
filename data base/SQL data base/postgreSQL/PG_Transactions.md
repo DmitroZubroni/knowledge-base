@@ -1,7 +1,9 @@
 # PG Transactions — ACID, MVCC, Блокировки
 
+> **Теги:** #postgresql #database #transactions #конспект  
+
 > [!abstract] Связи
-> [[00_PostgreSQL]] | [[PG_Architecture]] | [[PG_Performance]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
 
 ---
 

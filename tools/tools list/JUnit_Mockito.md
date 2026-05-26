@@ -1,7 +1,9 @@
 # JUnit 5 / Mockito
 
+> **Теги:** #tools #testing #конспект  
+
 > [!abstract] Связи
-> [[main Tools]] | [[Spring_Test]]
+> [[main]] | [[main Tools]]
 
 ---
 

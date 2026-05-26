@@ -1,7 +1,9 @@
 # Spring — Hibernate (ORM, Mapping, Session)
 
+> **Теги:** #spring #framework #hibernate #orm #middle #конспект  
+
 > [!abstract] Связи
-> [[00_Spring_Index]] | [[Spring_Data_JPA]] | [[JDBC_JPA]] | [[00_PostgreSQL]]
+> [[main]] | [[main Java]] | [[00_Spring_Index]]
 
 ---
 

@@ -1,7 +1,9 @@
 # 🐳 Docker  — Теория и ключевые термины
 
-> **Теги:** #docker #theory #concepts #containers  
-> **Статус:** #изучено
+> **Теги:** #docker #theory #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Docker]]
 
 ---
 
@@ -275,5 +277,4 @@ Dockerfile → (docker build) → Image → (docker run) → Container
 
 > [!TIP] Image — неизменяем
 > Нельзя изменить запущенный Image. Любые изменения — это новый Image.
-
 

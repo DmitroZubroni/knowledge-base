@@ -1,7 +1,9 @@
 # Spring — Test (Unit, Integration, MockMvc)
 
+> **Теги:** #spring #framework #testing #конспект  
+
 > [!abstract] Связи
-> [[00_Spring_Index]] | [[Spring_Boot]] | [[Spring_Web_REST]] | [[Spring_Security]] | [[JUnit_Mockito]]
+> [[main]] | [[main Java]] | [[00_Spring_Index]]
 
 ---
 

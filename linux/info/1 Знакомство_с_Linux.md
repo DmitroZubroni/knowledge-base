@@ -1,8 +1,11 @@
 #   Знакомство с Linux
 
+> **Теги:** #linux #basics #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Linux]]
+
 > **Курс:** Linux Essentials (JavaRush)  
-> **Теги:** #linux #basics #filesystem #cli  
-> **Статус:** #изучено
 
 ---
 
@@ -203,6 +206,4 @@ ls -la > out.txt 2>&1         # всё (вывод + ошибки) в файл
 | `Ctrl+L` | Очистить экран |
 | `↑ / ↓` | История команд |
 | `Ctrl+R` | Поиск в истории |
-
-
 

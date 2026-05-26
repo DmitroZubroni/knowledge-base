@@ -1,5 +1,10 @@
 # 00 — PostgreSQL Hub
 
+> **Теги:** #postgresql #hub #database  
+
+> [!abstract] Навигация
+> [[main]] | [[main Data Base]] | [[main SQL DB]]
+
 ## 🔹 Структура раздела
 
 | Файл | Содержание |

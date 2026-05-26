@@ -1,7 +1,9 @@
 # 01 — Синтаксис и основы Java
 
+> **Теги:** #java #programming #basics #syntax #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[02_OOP_Core]] | [[11_JVM_Internals]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

@@ -1,7 +1,9 @@
 # Spring — Boot (Auto-configuration, Starters)
 
+> **Теги:** #spring #framework #boot #конспект  
+
 > [!abstract] Связи
-> [[00_Spring_Index]] | [[Spring_Core]] | [[Spring_Web_REST]]
+> [[main]] | [[main Java]] | [[00_Spring_Index]]
 
 ---
 

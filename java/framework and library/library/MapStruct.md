@@ -1,7 +1,9 @@
 # MapStruct
 
+> **Теги:** #java #library #mapstruct #конспект  
+
 > [!abstract] Связи
-> [[00_Library]] | [[Spring_Web_REST]] | [[Lombok]]
+> [[main]] | [[main Java]] | [[00_Library]]
 
 ---
 

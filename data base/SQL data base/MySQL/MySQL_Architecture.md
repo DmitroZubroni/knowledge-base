@@ -1,7 +1,9 @@
 # MySQL Architecture — Архитектура MySQL
 
+> **Теги:** #mysql #database #architecture #конспект  
+
 > [!abstract] Связи
-> [[00_MySQL]] | [[MySQL_Transactions]] | [[MySQL_Performance]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_MySQL]]
 
 ---
 

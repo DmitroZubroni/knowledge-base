@@ -1,7 +1,9 @@
 # PG DataTypes — Типы данных PostgreSQL
 
+> **Теги:** #postgresql #database #datatypes #конспект  
+
 > [!abstract] Связи
-> [[00_PostgreSQL]] | [[PG_Architecture]] | [[SQL_DDL]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
 
 PostgreSQL предлагает богатый набор типов данных — помимо стандартных SQL есть UUID, JSON, массивы, диапазоны, геометрия и пользовательские типы.
 

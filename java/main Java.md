@@ -1,3 +1,12 @@
+# main Java
+
+> **Теги:** #java #hub #layer-main  
+
+> [!abstract] Навигация
+> [[main]]
+
+---
+
 [[00_JAVA]]
 
 ---

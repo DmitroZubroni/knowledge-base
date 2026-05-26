@@ -1,7 +1,9 @@
 # SQL Advanced — CTE, Window Functions, Transactions, Indexes
 
+> **Теги:** #sql #database #advanced #конспект  
+
 > [!abstract] Связи
-> [[00_SQL]] | [[SQL_DML]] | [[SQL_Joins]] | [[PG_Performance]] | [[PG_Transactions]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_SQL]]
 
 Продвинутые возможности SQL: CTE, оконные функции, транзакции, индексы, нормализация.
 

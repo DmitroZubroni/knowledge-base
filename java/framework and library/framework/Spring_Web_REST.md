@@ -1,7 +1,9 @@
 # Spring — Web REST (MVC, REST, Validation)
 
+> **Теги:** #spring #framework #mvc #rest #конспект  
+
 > [!abstract] Связи
-> [[00_Spring_Index]] | [[Spring_Boot]] | [[Spring_Security]] | [[Rest Api]] | [[OpenApi]]
+> [[main]] | [[main Java]] | [[00_Spring_Index]]
 
 ---
 

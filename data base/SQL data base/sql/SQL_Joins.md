@@ -1,7 +1,9 @@
 # SQL Joins — объединение таблиц
 
+> **Теги:** #sql #database #joins #конспект  
+
 > [!abstract] Связи
-> [[00_SQL]] | [[SQL_DML]] | [[SQL_Advanced]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_SQL]]
 
 JOIN — механизм объединения строк из двух и более таблиц по условию связи.
 

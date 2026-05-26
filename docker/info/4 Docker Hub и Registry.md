@@ -1,7 +1,9 @@
 # Docker  Docker Hub и Registry
 
-> **Теги:** #docker #dockerhub #registry #push #pull  
-> **Статус:** #изучено
+> **Теги:** #docker #registry #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Docker]]
 
 ---
 

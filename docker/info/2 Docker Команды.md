@@ -1,7 +1,9 @@
 #  Docker — Команды
 
-> **Теги:** #docker #commands #cli #terminal  
-> **Статус:** #изучено
+> **Теги:** #docker #commands #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Docker]]
 
 ---
 

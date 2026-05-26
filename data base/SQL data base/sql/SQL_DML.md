@@ -1,7 +1,9 @@
 # SQL DML — Data Manipulation Language
 
+> **Теги:** #sql #database #dml #конспект  
+
 > [!abstract] Связи
-> [[00_SQL]] | [[SQL_DDL]] | [[SQL_Joins]] | [[SQL_Advanced]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_SQL]]
 
 DML — команды для работы с **данными**: выборка, вставка, изменение, удаление.
 

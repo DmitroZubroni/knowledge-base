@@ -1,7 +1,9 @@
 # 11 — JVM Internals
 
+> **Теги:** #java #programming #jvm #internals #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[01_Basics]] | [[02_OOP_Core]] | [[09_Multithreading]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

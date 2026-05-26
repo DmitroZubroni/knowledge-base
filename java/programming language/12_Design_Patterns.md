@@ -1,7 +1,9 @@
 # 12 — Паттерны проектирования (Design Patterns)
 
+> **Теги:** #java #programming #patterns #gof #middle #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[Spring_Core]] | [[10_SOLID]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

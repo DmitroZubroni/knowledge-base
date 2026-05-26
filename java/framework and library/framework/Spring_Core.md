@@ -1,7 +1,9 @@
 # Spring — Core (IoC, DI, Container)
 
+> **Теги:** #spring #framework #ioc #di #конспект  
+
 > [!abstract] Связи
-> [[00_Spring_Index]] | [[Spring_Boot]] | [[12_Design_Patterns]]
+> [[main]] | [[main Java]] | [[00_Spring_Index]]
 
 ---
 

@@ -1,5 +1,10 @@
 #  DHCP — Dynamic Host Configuration Protocol
 
+> **Теги:** #networks #dhcp #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Internet Networks]]
+
 > [!abstract] Суть одной строкой
 > DHCP **автоматически выдаёт IP-адреса** устройствам в сети. Без него сисадмин должен вручную настраивать каждый компьютер.
 

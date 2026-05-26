@@ -1,7 +1,9 @@
 # 03 — ООП: Наследование, полиморфизм, интерфейсы
 
+> **Теги:** #java #programming #oop #inheritance #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[02_OOP_Core]] | [[04_OOP_Principles]] | [[08_Functional]] | [[10_SOLID]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

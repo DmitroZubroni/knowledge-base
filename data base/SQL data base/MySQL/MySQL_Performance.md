@@ -1,7 +1,9 @@
 # MySQL Performance — Оптимизация и EXPLAIN
 
+> **Теги:** #mysql #database #performance #конспект  
+
 > [!abstract] Связи
-> [[00_MySQL]] | [[MySQL_Indexes]] | [[MySQL_Transactions]] | [[MySQL_Architecture]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_MySQL]]
 
 ---
 

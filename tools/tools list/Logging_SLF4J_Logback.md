@@ -1,7 +1,9 @@
 # SLF4J / Logback
 
+> **Теги:** #tools #logging #конспект  
+
 > [!abstract] Связи
-> [[main Tools]] | [[Spring_Boot]]
+> [[main]] | [[main Tools]]
 
 ---
 

@@ -1,7 +1,9 @@
 # 06 — Коллекции (Collections)
 
+> **Теги:** #java #programming #collections #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[07_Generics]] | [[08_Functional]] | [[05_Exceptions]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

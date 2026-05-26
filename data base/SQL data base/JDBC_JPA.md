@@ -1,7 +1,9 @@
 # JDBC / JPA (Data Access)
 
+> **Теги:** #database #jdbc #jpa #hikari #middle #конспект  
+
 > [!abstract] Связи
-> [[00_SQL]] | [[Hibernate]] | [[Spring_Data_JPA]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_SQL]]
 
 ---
 

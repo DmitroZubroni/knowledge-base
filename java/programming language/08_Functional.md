@@ -1,7 +1,9 @@
 # 08 — Функциональное программирование
 
+> **Теги:** #java #programming #lambda #streams #конспект  
+
 > [!abstract] Связи
-> [[00_JAVA]] | [[06_Collections]] | [[07_Generics]] | [[03_OOP_Advanced]]
+> [[main]] | [[main Java]] | [[00_JAVA]]
 
 ---
 

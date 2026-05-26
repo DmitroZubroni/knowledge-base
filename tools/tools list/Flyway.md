@@ -1,7 +1,9 @@
 # Flyway (Schema Migrations)
 
+> **Теги:** #tools #flyway #конспект  
+
 > [!abstract] Связи
-> [[main Tools]] | [[Spring_Data_JPA]] | [[Hibernate]] | [[00_PostgreSQL]]
+> [[main]] | [[main Tools]]
 
 ---
 

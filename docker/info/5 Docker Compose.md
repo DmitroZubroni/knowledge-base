@@ -1,7 +1,9 @@
 # 🎼 Docker Docker Compose и YAML
 
-> **Теги:** #docker #compose #yaml #yml #multi-container  
-> **Статус:** #изучено
+> **Теги:** #docker #compose #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Docker]]
 
 ---
 

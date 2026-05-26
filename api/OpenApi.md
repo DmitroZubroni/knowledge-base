@@ -1,7 +1,9 @@
 # OpenAPI
 
+> **Теги:** #api #openapi #конспект  
+
 > [!abstract] Связи
-> [[main API]] | [[Rest Api]] | [[Spring_Web_REST]] | [[Swagger]]
+> [[main]] | [[main API]]
 
 ---
 

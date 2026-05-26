@@ -1,7 +1,9 @@
 # REST API
 
+> **Теги:** #api #rest #конспект  
+
 > [!abstract] Связи
-> [[main API]] | [[Spring_Web_REST]] | [[OpenApi]] | [[OAuth2_JWT]]
+> [[main]] | [[main API]]
 
 ---
 

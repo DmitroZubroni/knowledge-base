@@ -1,7 +1,9 @@
 # PG Performance — Оптимизация и EXPLAIN
 
+> **Теги:** #postgresql #database #performance #конспект  
+
 > [!abstract] Связи
-> [[00_PostgreSQL]] | [[PG_Indexes]] | [[PG_Transactions]] | [[PG_Architecture]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
 
 ---
 

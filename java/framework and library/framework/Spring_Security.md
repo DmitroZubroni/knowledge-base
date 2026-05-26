@@ -1,7 +1,9 @@
 # Spring — Security (Auth, Filters, JWT, OAuth2)
 
+> **Теги:** #spring #framework #security #middle #конспект  
+
 > [!abstract] Связи
-> [[00_Spring_Index]] | [[Spring_Web_REST]] | [[OAuth2_JWT]]
+> [[main]] | [[main Java]] | [[00_Spring_Index]]
 
 ---
 

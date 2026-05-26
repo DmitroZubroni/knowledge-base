@@ -1,7 +1,9 @@
 # MySQL Advanced — Репликация, Партиционирование, Процедуры
 
+> **Теги:** #mysql #database #advanced #конспект  
+
 > [!abstract] Связи
-> [[00_MySQL]] | [[MySQL_Architecture]] | [[MySQL_Performance]] | [[MySQL_Transactions]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_MySQL]]
 
 ---
 

@@ -1,7 +1,9 @@
 # MySQL Indexes — Индексы MySQL
 
+> **Теги:** #mysql #database #indexes #конспект  
+
 > [!abstract] Связи
-> [[00_MySQL]] | [[MySQL_Architecture]] | [[MySQL_Performance]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_MySQL]]
 
 ---
 

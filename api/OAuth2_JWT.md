@@ -1,7 +1,9 @@
 # OAuth2 / JWT
 
+> **Теги:** #api #oauth2 #конспект  
+
 > [!abstract] Связи
-> [[main API]] | [[Spring_Security]] | [[Rest Api]]
+> [[main]] | [[main API]]
 
 ---
 

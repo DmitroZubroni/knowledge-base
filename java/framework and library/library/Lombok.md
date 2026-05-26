@@ -1,7 +1,9 @@
 # Lombok
 
+> **Теги:** #java #library #lombok #конспект  
+
 > [!abstract] Связи
-> [[00_Library]] | [[Spring_Core]]
+> [[main]] | [[main Java]] | [[00_Library]]
 
 ---
 

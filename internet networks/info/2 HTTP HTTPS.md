@@ -1,5 +1,10 @@
 #  HTTP и HTTPS
 
+> **Теги:** #networks #http #конспект  
+
+> [!abstract] Связи
+> [[main]] | [[main Internet Networks]]
+
 > [!abstract] Суть
 > **HTTP (HyperText Transfer Protocol)** — протокол, по которому браузер получает страницы от сервера. Это фундамент всего веба. **HTTPS** = HTTP + шифрование TLS.
 

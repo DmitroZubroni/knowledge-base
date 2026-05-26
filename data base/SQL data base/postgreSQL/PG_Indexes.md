@@ -1,7 +1,9 @@
 # PG Indexes — Индексы PostgreSQL
 
+> **Теги:** #postgresql #database #indexes #конспект  
+
 > [!abstract] Связи
-> [[00_PostgreSQL]] | [[PG_Performance]] | [[PG_Architecture]] | [[SQL_Advanced]]
+> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
 
 ---
 

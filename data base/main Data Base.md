@@ -1,4 +1,4 @@
-# Data Base — Hub
+# main Data Base
 
 > **Теги:** #database #hub #layer-main  
 
@@ -7,11 +7,7 @@
 
 ---
 
-[[00_SQL]]
-
----
-
-[[00_PostgreSQL]]
+[[main SQL DB]]
 
 ---
 

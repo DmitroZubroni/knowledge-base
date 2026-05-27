@@ -3,7 +3,7 @@
 > **Теги:** #kb #hub #root  
 
 > [!abstract] Навигация
-> [[main Java]] | [[main Data Base]] | [[main API]] | [[main Tools]] | [[main Docker]] | [[main Linux]] | [[main Internet Networks]]
+> [[main Java]] | [[main Data Base]] | [[main API]] | [[main Tools]] | [[main Docker]] | [[main Kubernetes]] | [[main Linux]] | [[main Internet Networks]]
 
 ---
 
@@ -11,10 +11,11 @@
 
 | Раздел | Хаб | Что внутри |
 |--------|-----|------------|
-| ☕ Java | [[main Java]] | Core, Spring, Library |
+| ☕ Java | [[main Java]] | Core, Spring, Library, Modern Java |
 | 🗄️ Data Base | [[main Data Base]] | SQL, PostgreSQL, NoSQL |
 | 🌐 API | [[main API]] | REST, gRPC, OAuth2, OpenAPI |
-| 🛠️ Tools | [[main Tools]] | Git, Gradle, Kafka, Flyway, JUnit |
+| 🛠️ Tools | [[main Tools]] | Git, Gradle, Maven, Kafka, Flyway, JUnit |
 | 🐳 Docker | [[main Docker]] | Теория, команды, Compose |
-| 🐧 Linux | [[main Linux]] | Команды, сеть, безопасность |
-| 📡 Networks | [[main Internet Networks]] | OSI, HTTP, DNS, DHCP |
+| ☸️ Kubernetes | [[main Kubernetes]] | Архитектура, Workloads, Ingress |
+| 🐧 Linux | [[main Linux]] | Команды, сеть, firewall |
+| 📡 Networks | [[main Internet Networks]] | OSI, HTTP, DNS, DHCP, TLS, WebSocket, LB |

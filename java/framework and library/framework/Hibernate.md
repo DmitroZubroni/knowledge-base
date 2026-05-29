@@ -3,7 +3,7 @@
 > **Теги:** #spring #framework #hibernate #orm #middle #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_Spring_Index]]
+> [[main]] | [[main Java]] | [[Spring_Index]]
 
 ---
 

@@ -3,7 +3,7 @@
 > **Теги:** #sql #database #dml #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_SQL]]
+> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[SQL]]
 
 DML — команды для работы с **данными**: выборка, вставка, изменение, удаление.
 

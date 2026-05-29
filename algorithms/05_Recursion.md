@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #recursion #memoization #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[00_Algorithms]]
+> [[main]] | [[main Algorithms]] | [[main Algorithms]]
 
 # 🔄 Рекурсия и Мемоизация
 

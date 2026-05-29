@@ -3,7 +3,7 @@
 > **Теги:** #mysql #database #datatypes #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_MySQL]]
+> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[MySQL]]
 
 ---
 

@@ -40,3 +40,11 @@
 ---
 
 [[GitHub_Actions]]
+
+---
+
+[[main Kubernetes]]
+
+---
+
+[[main Docker]]

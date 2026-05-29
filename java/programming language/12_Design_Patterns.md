@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #patterns #gof #middle #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_JAVA]]
+> [[main]] | [[main Java]] | [[JAVA]]
 
 ---
 

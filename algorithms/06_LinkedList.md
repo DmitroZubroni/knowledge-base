@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #linkedlist #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[00_Algorithms]]
+> [[main]] | [[main Algorithms]] | [[main Algorithms]]
 
 # 🔗 Связанные списки (Linked Lists)
 

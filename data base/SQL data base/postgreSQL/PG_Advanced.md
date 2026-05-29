@@ -3,7 +3,7 @@
 > **Теги:** #postgresql #database #advanced #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
+> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[PostgreSQL]]
 
 ---
 

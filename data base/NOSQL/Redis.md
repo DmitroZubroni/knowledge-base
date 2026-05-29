@@ -3,7 +3,7 @@
 > **Теги:** #nosql #redis #cache #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Data Base]] | [[00_NoSQL_DB]]
+> [[main]] | [[main SQL DB]] | [[NoSQL_DB]]
 
 ---
 

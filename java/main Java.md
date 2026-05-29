@@ -7,12 +7,12 @@
 
 ---
 
-[[00_JAVA]]
+[[JAVA]]
 
 ---
 
-[[00_Spring_Index]]
+[[Spring_Index]]
 
 ---
 
-[[00_Library]]
+[[Library]]

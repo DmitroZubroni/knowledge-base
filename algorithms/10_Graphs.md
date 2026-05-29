@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #graphs #bfs #dfs #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[00_Algorithms]]
+> [[main]] | [[main Algorithms]] | [[main Algorithms]]
 
 # 🕸 Графы (Graphs)
 

@@ -3,7 +3,7 @@
 > **Теги:** #spring #framework #mvc #rest #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_Spring_Index]]
+> [[main]] | [[main Java]] | [[Spring_Index]]
 
 ---
 

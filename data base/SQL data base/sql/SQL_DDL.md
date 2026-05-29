@@ -3,7 +3,7 @@
 > **Теги:** #sql #database #ddl #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_SQL]]
+> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[SQL]]
 
 DDL — команды для определения и изменения **структуры** базы данных: таблицы, схемы, индексы, ограничения.
 

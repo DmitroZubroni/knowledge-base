@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #greedy #dp #динамическоепрограммирование #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[00_Algorithms]]
+> [[main]] | [[main Algorithms]] | [[main Algorithms]]
 
 # 🧩 Жадные алгоритмы и Динамическое программирование
 

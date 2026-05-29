@@ -3,7 +3,7 @@
 > **Теги:** #api #hub #layer-main  
 
 > [!abstract] Навигация
-> [[main]]
+> [[main]] | [[main Internet Networks]]
 
 ---
 

@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #concurrency #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_JAVA]]
+> [[main]] | [[main Java]] | [[JAVA]]
 
 ---
 

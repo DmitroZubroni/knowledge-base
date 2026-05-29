@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #jvm #internals #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_JAVA]]
+> [[main]] | [[main Java]] | [[JAVA]]
 
 ---
 

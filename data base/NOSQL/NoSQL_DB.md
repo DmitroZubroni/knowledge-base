@@ -3,7 +3,7 @@
 > **Теги:** #nosql #hub #database  
 
 > [!abstract] Навигация
-> [[main]] | [[main Data Base]]
+> [[main]] | [[main SQL DB]]
 
 ---
 

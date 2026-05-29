@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #exceptions #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_JAVA]]
+> [[main]] | [[main Java]] | [[JAVA]]
 
 ---
 

@@ -3,7 +3,7 @@
 > **Теги:** #java #library #json #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_Library]]
+> [[main]] | [[main Java]] | [[Library]]
 
 ---
 

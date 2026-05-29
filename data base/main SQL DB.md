@@ -3,16 +3,16 @@
 > **Теги:** #database #sql #hub #layer-mid  
 
 > [!abstract] Навигация
-> [[main]] | [[main Data Base]]
+> [[main]]
 
 ---
 
-[[00_SQL]]
+[[SQL]]
 
 ---
 
-[[00_PostgreSQL]]
+[[PostgreSQL]]
 
 ---
 
-[[00_MySQL]]
+[[MySQL]]

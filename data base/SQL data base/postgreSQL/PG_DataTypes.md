@@ -3,7 +3,7 @@
 > **Теги:** #postgresql #database #datatypes #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Data Base]] | [[main SQL DB]] | [[00_PostgreSQL]]
+> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[PostgreSQL]]
 
 PostgreSQL предлагает богатый набор типов данных — помимо стандартных SQL есть UUID, JSON, массивы, диапазоны, геометрия и пользовательские типы.
 

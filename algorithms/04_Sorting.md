@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #sorting #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[00_Algorithms]]
+> [[main]] | [[main Algorithms]] | [[main Algorithms]]
 
 # 🔃 Алгоритмы сортировки
 

@@ -3,7 +3,7 @@
 > **Теги:** #java #library #lombok #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_Library]]
+> [[main]] | [[main Java]] | [[Library]]
 
 ---
 

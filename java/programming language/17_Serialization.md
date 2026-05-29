@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #serialization #json #jackson #конспект
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[00_JAVA]]
+> [[main]] | [[main Java]] | [[JAVA]]
 
 ---
 

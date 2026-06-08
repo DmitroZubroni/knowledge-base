@@ -3,7 +3,7 @@
 > **Теги:** #kubernetes #deployment #configmap #secret #конспект
 
 > [!abstract] Связи
-> [[main]] | [[main Kubernetes]]
+> [[main]] | [[main Tools]]
 
 ---
 

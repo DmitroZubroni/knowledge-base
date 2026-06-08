@@ -3,7 +3,7 @@
 > **Теги:** #sql #database #joins #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[SQL]]
+> [[main]] | [[main SQL DB]] | [[SQL]]
 
 JOIN — механизм объединения строк из двух и более таблиц по условию связи.
 

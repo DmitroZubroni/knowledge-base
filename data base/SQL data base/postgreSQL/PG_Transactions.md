@@ -3,7 +3,7 @@
 > **Теги:** #postgresql #database #transactions #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[PostgreSQL]]
+> [[main]] | [[main SQL DB]] | [[PostgreSQL]]
 
 ---
 

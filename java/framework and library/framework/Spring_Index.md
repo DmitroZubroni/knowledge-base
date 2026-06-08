@@ -47,7 +47,7 @@
 ## 🔗 Карта зависимостей
 
 ```
-00_Spring_Index
+Spring_Index
     │
     ├──► Spring_Core ──► Spring_Boot
     │                         │

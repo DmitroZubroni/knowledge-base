@@ -3,7 +3,7 @@
 > **Теги:** #mysql #database #transactions #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[MySQL]]
+> [[main]] | [[main SQL DB]] | [[MySQL]]
 
 ---
 

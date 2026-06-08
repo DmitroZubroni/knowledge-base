@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #hashtable #hashmap #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[main Algorithms]]
+> [[main]] | [[main Algorithms]]
 
 # 🗂 Хэш-таблицы (Hash Tables)
 

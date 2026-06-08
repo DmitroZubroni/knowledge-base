@@ -3,7 +3,7 @@
 > **Теги:** #kubernetes #theory #architecture #pods #конспект
 
 > [!abstract] Связи
-> [[main]] | [[main Kubernetes]]
+> [[main]] | [[main Tools]]
 
 ---
 

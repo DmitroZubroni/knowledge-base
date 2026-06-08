@@ -3,7 +3,7 @@
 > **Теги:** #api #openapi #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main API]]
+> [[main]] | [[main Internet Networks]]
 
 ---
 

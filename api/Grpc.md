@@ -3,7 +3,7 @@
 > **Теги:** #api #grpc #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main API]]
+> [[main]] | [[main Internet Networks]]
 
 ---
 

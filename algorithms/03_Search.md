@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #search #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[main Algorithms]]
+> [[main]] | [[main Algorithms]]
 
 # 🔍 Алгоритмы поиска
 

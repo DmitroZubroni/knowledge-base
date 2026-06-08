@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #trees #bst #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[main Algorithms]]
+> [[main]] | [[main Algorithms]]
 
 # 🌳 Деревья (Trees)
 

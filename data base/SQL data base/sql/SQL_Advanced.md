@@ -3,7 +3,7 @@
 > **Теги:** #sql #database #advanced #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[SQL]]
+> [[main]] | [[main SQL DB]] | [[SQL]]
 
 Продвинутые возможности SQL: CTE, оконные функции, транзакции, индексы, нормализация.
 

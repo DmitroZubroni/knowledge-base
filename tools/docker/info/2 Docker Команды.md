@@ -3,7 +3,7 @@
 > **Теги:** #docker #commands #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Docker]]
+> [[main]] | [[main Tools]]
 
 ---
 

@@ -1,4 +1,4 @@
-# 00_NoSQL_DB
+# NoSQL_DB
 
 > **Теги:** #nosql #hub #database  
 

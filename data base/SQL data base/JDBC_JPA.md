@@ -3,7 +3,7 @@
 > **Теги:** #database #jdbc #jpa #hikari #middle #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main SQL DB]] | [[main SQL DB]] | [[SQL]]
+> [[main]] | [[main SQL DB]] | [[SQL]]
 
 ---
 

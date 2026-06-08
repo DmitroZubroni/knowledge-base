@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #complexity #big-o #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[main Algorithms]]
+> [[main]] | [[main Algorithms]]
 
 # ⏱ Big-O нотация и сложность алгоритмов
 

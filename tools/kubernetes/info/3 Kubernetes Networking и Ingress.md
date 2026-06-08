@@ -3,7 +3,7 @@
 > **Теги:** #kubernetes #networking #ingress #service #конспект
 
 > [!abstract] Связи
-> [[main]] | [[main Kubernetes]]
+> [[main]] | [[main Tools]]
 
 ---
 

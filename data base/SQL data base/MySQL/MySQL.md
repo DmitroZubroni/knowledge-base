@@ -3,7 +3,7 @@
 > **Теги:** #mysql #hub #database  
 
 > [!abstract] Навигация
-> [[main]] | [[main SQL DB]] | [[main SQL DB]]
+> [[main]] | [[main SQL DB]]
 
 ## 🔹 Структура раздела
 

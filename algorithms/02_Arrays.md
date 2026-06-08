@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #arrays #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[main Algorithms]]
+> [[main]] | [[main Algorithms]]
 
 # 📦 Массивы (Arrays)
 

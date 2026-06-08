@@ -1,6 +1,6 @@
 > **Теги:** #algorithms #stack #queue #deque #конспект
 > [!abstract] Связи
-> [[main]] | [[main Algorithms]] | [[main Algorithms]]
+> [[main]] | [[main Algorithms]]
 
 # 📚 Stack, Queue, Deque
 

@@ -3,7 +3,7 @@
 > **Теги:** #api #oauth2 #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main API]]
+> [[main]] | [[main Internet Networks]]
 
 ---
 

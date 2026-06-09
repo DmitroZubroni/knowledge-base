@@ -16,21 +16,25 @@
 | [[HashMap]] | Хэш-таблица | бакеты, коллизии, treeify, rehash |
 | [[LinkedHashMap]] | HashMap с порядком | порядок вставки, порядок доступа, LRU-кэш |
 | [[TreeMap]] | Отсортированная Map | красно-чёрное дерево, floor/ceiling, диапазоны |
+| [[Queue]] | Очередь FIFO | offer/poll/peek, два набора методов |
+| [[Deque]] | Двусторонняя очередь | FIFO + LIFO + дек, push/pop, offerFirst/Last |
+| [[ArrayDeque]] | Быстрая реализация Deque | кольцевой массив, быстрее LinkedList и Stack |
+| [[PriorityQueue]] | Очередь с приоритетом | binary heap, min/max heap, O(log n) offer/poll |
 
 ---
 
 ## 📚 Порядок изучения
 
 ```
-[[ArrayList]]
-    ↓
-[[LinkedList]]
-    ↓
-[[Set]]
-    ↓
-[[HashMap]]
-    ↓
-[[LinkedHashMap]]
-    ↓
-[[TreeMap]]
+Списки:
+  [[ArrayList]] → [[LinkedList]]
+
+Множества:
+  [[Set]]
+
+Словари:
+  [[HashMap]] → [[LinkedHashMap]] → [[TreeMap]]
+
+Очереди:
+  [[Queue]] → [[Deque]] → [[ArrayDeque]] → [[PriorityQueue]]
 ```

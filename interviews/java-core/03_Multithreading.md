@@ -1,396 +1,323 @@
-# Multithreading
-
 > **Теги:** #interviews #java-core #multithreading #concurrency #конспект
-
 > [!abstract] Связи
-> [[main]] | [[Interviews]]
+> [[main]] | [[Interviews]] | [[Concurrency_Index]]
+
+# Multithreading — Вопросы на собесе
+
+---
+
+## 🔹 Состояния потока
+
+```
+NEW → RUNNABLE ⇄ BLOCKED       ← ждёт synchronized монитор
+               ⇄ WAITING       ← wait() / join() без таймаута
+               ⇄ TIMED_WAITING ← sleep(ms) / wait(ms) / join(ms)
+               → TERMINATED
+```
+
+**BLOCKED vs WAITING:**
+- `BLOCKED` — поток хочет войти в `synchronized`, но монитор занят другим потоком
+- `WAITING` — поток сам решил подождать (`wait()`, `join()`)
+
+---
+
+## 🔹 Race Condition — два аспекта
+
+**Atomicity:** `count++` — это READ → ADD → WRITE. Три шага, между которыми другой поток может вмешаться.
+
+**Visibility:** изменение одного потока может не быть видно другому из-за кэшей CPU (L1/L2). Каждое ядро хранит свою копию переменной.
+
+**JMM happens-before** — гарантия видимости:
+- Выход из `synchronized(lock)` → вход в `synchronized(lock)` на том же объекте
+- Запись в `volatile` → чтение той же `volatile` переменной
+- `Thread.start()` → любая операция в запущенном потоке
+- Все операции потока → `Thread.join()` в другом потоке
 
 ---
 
 ## 🔹 synchronized
 
-**synchronized** — ключевое слово для обеспечения потокобезопасности через монитор (lock).
-
-### Варианты использования
-
 ```java
-// 1. Синхронизация метода (instance)
-public synchronized void method() {
-    // блокируется this
-}
-
-// 2. Синхронизация статического метода (class)
-public static synchronized void staticMethod() {
-    // блокируется MyClass.class
-}
-
-// 3. Синхронизация блока
-public void block() {
-    synchronized (lock) {
-        // блокируется объект lock
-    }
-}
+synchronized (lock) { ... }          // монитор — явный объект (рекомендуется)
+public synchronized void method()    // монитор — this
+public static synchronized void m() // монитор — SomeClass.class
 ```
 
-### Как работает
+**Реентерабелен** — поток может повторно захватить свой монитор без deadlock.
 
-1. Поток пытается захватить монитор (monitor)
-2. Если монитор свободен — поток захватывает его
-3. Если монитор занят — поток переходит в состояние BLOCKED
-4. После выхода из synchronized блока монитор освобождается
+**Гранулярность:** держи в `synchronized` только чтение/запись общих данных. Сетевые вызовы, I/O, долгие вычисления — выноси наружу.
 
-### Проблемы
-
-- **Блокировка всего метода** — даже если критическая секция маленькая
-- **Deadlock** — взаимная блокировка потоков
-- **Производительность** — контекст свитчинг при блокировке
-
-> [!warning] synchronized vs ReentrantLock
-- synchronized — встроенный, неявный unlock
-- ReentrantLock — явный lock/unlock, tryLock(), fair lock
+> [!warning] Подводный камень Spring AOP (self-invocation)
+> `@Transactional` / `@Cacheable` работают через Proxy. Вызов `this.method()` минует Proxy → аннотация не сработает.
 
 ---
 
 ## 🔹 volatile
 
-**volatile** — ключевое слово для обеспечения видимости переменной между потоками.
+**Что гарантирует:** visibility (запись сразу видна всем) + запрет переупорядочивания инструкций.
 
-### Что гарантирует volatile
-
-1. **Visibility** — изменения volatile переменной сразу видны другим потокам
-2. **Ordering** — запрещает reordering инструкций
-
-### Что НЕ гарантирует volatile
-
-- **Atomicity** — операции не атомарны (кроме чтения/записи)
+**Что НЕ гарантирует:** atomicity составных операций.
 
 ```java
-volatile int counter;
-
-// НЕ атомарно! race condition
-counter++;  // read → modify → write
+volatile boolean running = true;   // ✅ простой флаг — volatile хватает
+volatile int counter = 0;
+counter++;                          // ❌ всё ещё не атомарно! (READ-ADD-WRITE)
 ```
 
-### Когда использовать volatile
+**volatile vs synchronized:**
+| | volatile | synchronized |
+|-|----------|-------------|
+| Visibility | ✅ | ✅ |
+| Atomicity составных операций | ❌ | ✅ |
+| Блокирует потоки | Нет | Да (BLOCKED) |
 
-- Флаги остановки потока
-- Singleton pattern (double-checked locking)
-- Переменные с одним потоком записи и несколькими чтения
-
-```java
-private volatile boolean running = true;
-
-public void stop() {
-    running = false;  // сразу видна другим потокам
-}
-```
-
-> [!tip] volatile vs synchronized
-- volatile — только visibility, без блокировки
-- synchronized — visibility + atomicity + mutual exclusion
+**Когда достаточно volatile:**
+- Простой флаг остановки (`running = false`)
+- Double-Checked Locking в Singleton (`volatile` обязателен — без него возможна публикация наполовину сконструированного объекта)
+- Публикация ссылки на immutable объект
 
 ---
 
-## 🔹 Atomic классы
+## 🔹 Atomic классы — CAS без блокировок
 
-**Atomic** — классы из `java.util.concurrent.atomic` для атомарных операций без блокировок (CAS — Compare-And-Swap).
-
-### Основные классы
-
-| Класс | Назначение |
-|-------|------------|
-| `AtomicInteger` | Атомарные операции над int |
-| `AtomicLong` | Атомарные операции над long |
-| `AtomicBoolean` | Атомарные операции над boolean |
-| `AtomicReference<V>` | Атомарные операции над ссылкой |
-| `AtomicIntegerArray` | Атомарные операции над массивом int |
-
-### Основные методы
+**CAS (Compare-And-Swap)** — атомарная инструкция CPU:
+```
+если значение == expected → записать new, вернуть true
+иначе → ничего не менять, вернуть false
+```
 
 ```java
 AtomicInteger counter = new AtomicInteger(0);
-
-counter.get();           // чтение
-counter.set(5);         // запись
-counter.getAndIncrement();  // вернуть старое, затем ++
-counter.incrementAndGet();   // ++, затем вернуть новое
-counter.compareAndSet(expected, update);  // CAS
+counter.incrementAndGet()           // ++x, возвращает новое
+counter.getAndIncrement()           // x++, возвращает старое
+counter.compareAndSet(5, 10)        // CAS: если 5 → поставить 10
+counter.updateAndGet(x -> x * 2)    // атомарное обновление функцией
 ```
 
-### Как работает CAS
+**LongAdder** — для очень высокой конкуренции. Хранит несколько ячеек, каждый поток пишет в свою, итог суммируется при `sum()`. Быстрее AtomicLong при записи, но `sum()` — не мгновенный снимок.
 
-```
-1. Читаем текущее значение
-2. Вычисляем новое значение
-3. Сравниваем: если текущее == ожидаемое → записываем новое
-4. Если не равно → повторяем (retry)
-```
-
-> [!tip] Когда использовать Atomic
-- Счётчики в многопоточной среде
-- Когда нужна атомарность без блокировок
-- Когда операции простые (get, set, increment)
+| | synchronized | AtomicInteger | LongAdder |
+|-|-------------|---------------|-----------|
+| Механизм | Монитор | CAS | Несколько ячеек + CAS |
+| Потоки ждут (BLOCKED) | Да | Нет (retry) | Нет |
+| При высокой конкуренции | Плохо | Средне | **Лучше** |
+| Когда использовать | Сложная логика | Счётчик, частое чтение | Метрики, редкое чтение |
 
 ---
 
-## 🔹 ConcurrentHashMap
+## 🔹 Deadlock, Livelock, Starvation
 
-**ConcurrentHashMap** — потокобезопасная реализация HashMap из `java.util.concurrent`.
+**Deadlock** — потоки навечно ждут друг друга. Четыре условия Coffman:
+1. Mutual Exclusion — ресурс у одного потока
+2. Hold and Wait — держит одно, ждёт другое
+3. No Preemption — нельзя отобрать принудительно
+4. **Circular Wait** — самое частое, нарушить проще всего
 
-### Отличия от HashMap
+**Решения deadlock:**
+- Всегда захватывать локи в **одном и том же порядке** во всех потоках
+- `tryLock(timeout)` — попробовать с таймаутом и отступить
+- `jstack <PID>` → thread dump → раздел "Found Java-level deadlock"
 
-| Характеристика | HashMap | ConcurrentHashMap |
-|----------------|---------|-------------------|
-| Потокобезопасность | Нет | Да |
-| Производительность | Высокая (single-thread) | Высокая (multi-thread) |
-| Блокировка | — | Fine-grained (по сегментам/бакетам) |
+**Livelock** — потоки активны (RUNNABLE), но не продвигаются. Решение: random backoff (`Thread.sleep(random)`).
 
-### Как работает
-
-**Java 7:** сегментация (Segment-based locking)
-- Куча разделена на сегменты (16 по умолчанию)
-- Каждый сегмент имеет свой lock
-- Операции в разных сегментах параллельны
-
-**Java 8+:** блокировка по бакетам (bucket-level locking)
-- Lock только на конкретный бакет
-- При чтении — без блокировки
-- При записи — lock на head бакета
-
-```java
-ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
-
-map.put("key", 1);        // lock на бакет
-map.get("key");           // без блокировки
-map.computeIfAbsent("key", k -> 0);  // атомарная операция
-```
-
-### Атомарные операции
-
-```java
-map.putIfAbsent(key, value);      // если нет ключа
-map.replace(key, oldValue, newValue);  // CAS
-map.compute(key, (k, v) -> v + 1);     // атомарная функция
-```
-
-> [!tip] ConcurrentHashMap vs Hashtable
-- Hashtable — synchronized на весь map, медленно
-- ConcurrentHashMap — fine-grained locking, быстро
+**Starvation** — поток никогда не получает ресурс. Решение: `new ReentrantLock(true)` — fair mode (FIFO очередь).
 
 ---
 
-## 🔹 Executor Service
+## 🔹 ReentrantLock и Locks
 
-**ExecutorService** — фреймворк для управления пулом потоков.
-
-### Создание пулов
-
+**Когда ReentrantLock вместо synchronized:**
 ```java
-// 1. Fixed thread pool
-ExecutorService fixed = Executors.newFixedThreadPool(10);
-
-// 2. Cached thread pool
-ExecutorService cached = Executors.newCachedThreadPool();
-
-// 3. Single thread executor
-ExecutorService single = Executors.newSingleThreadExecutor();
-
-// 4. Scheduled thread pool
-ScheduledExecutorService scheduled = Executors.newScheduledThreadPool(5);
+lock.tryLock(500, TimeUnit.MILLISECONDS) // попытка с таймаутом — борьба с deadlock
+lock.lockInterruptibly()                  // можно прервать через interrupt()
+new ReentrantLock(true)                   // fair mode — FIFO, против starvation
 ```
 
-### Отправка задач
+**Правило:** `unlock()` ВСЕГДА в `finally`. Иначе при исключении лок остаётся захваченным навсегда.
 
+**ReentrantReadWriteLock** — несколько читателей параллельно, писатель — эксклюзивно:
 ```java
-// Runnable — без возвращаемого значения
-executor.submit(() -> {
-    System.out.println("Task");
-});
-
-// Callable — с возвращаемым значением
-Future<Integer> future = executor.submit(() -> {
-    return 42;
-});
-
-Integer result = future.get();  // блокирует до завершения
+readLock.lock()   // много потоков одновременно
+writeLock.lock()  // только один, ждёт всех читателей
 ```
+Использовать: часто читаем, редко пишем (кэши, справочники).
 
-### ScheduledExecutorService
-
+**StampedLock** (Java 8+) — оптимистичное чтение без блокировки:
 ```java
-// Запуск с задержкой
-scheduled.schedule(task, 1, TimeUnit.SECONDS);
-
-// Периодический запуск (fixed rate)
-scheduled.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
-
-// Периодический запуск (fixed delay)
-scheduled.scheduleWithFixedDelay(task, 0, 1, TimeUnit.SECONDS);
+long stamp = lock.tryOptimisticRead();
+// читаем данные
+if (!lock.validate(stamp)) {      // были ли изменения?
+    stamp = lock.readLock();      // да → перечитываем с блокировкой
+    try { /* перечитать */ } finally { lock.unlockRead(stamp); }
+}
 ```
-
-### Завершение работы
-
-```java
-executor.shutdown();  // не принимает новые задачи
-executor.awaitTermination(1, TimeUnit.MINUTES);
-executor.shutdownNow();  // принудительное завершение
-```
-
-> [!warning] Executors.newCachedThreadPool()
-- Создаёт неограниченное количество потоков
-- Может привести к OutOfMemoryError
-- Лучше использовать ThreadPoolExecutor с ограничением
+Максимальная производительность при редких записях. **Не реентерабелен!**
 
 ---
 
-## 🔹 Виртуальные потоки (Virtual Threads)
+## 🔹 ExecutorService и ThreadPool
 
-**Virtual Threads** — лёгкие потоки, введённые в Java 21 (Project Loom).
+**Почему не создавать потоки вручную:** создание потока ~1мс, стек ~512KB–1MB. При 1000 запросах/сек — 1GB памяти только на стеки.
 
-### Отличия от platform threads
+**Виды пулов:**
+```java
+Executors.newFixedThreadPool(n)      // n потоков, unbounded очередь (риск OOM!)
+Executors.newCachedThreadPool()      // динамический, риск тысяч потоков
+Executors.newSingleThreadExecutor()  // строго последовательно
+Executors.newScheduledThreadPool(n)  // расписание
+```
 
-| Характеристика | Platform Thread | Virtual Thread |
-|----------------|-----------------|----------------|
-| Вес | Тяжёлый (1MB stack) | Лёгкий (KB stack) |
-| Создание | Медленно | Быстро |
-| Количество | Ограничено (тысячи) | Миллионы |
-| Блокировка | Блокирует OS поток | Mount/Unmount |
+**В продакшене** — явный `ThreadPoolExecutor`:
+```java
+new ThreadPoolExecutor(
+    corePoolSize, maxPoolSize,
+    keepAlive, TimeUnit.SECONDS,
+    new ArrayBlockingQueue<>(100),   // ограниченная очередь!
+    new ThreadPoolExecutor.CallerRunsPolicy() // back-pressure
+)
+```
 
-### Создание виртуальных потоков
+**Алгоритм:** задача пришла → `< core` потоков → создать поток → `< queue` места → в очередь → `< max` потоков → создать временный → иначе → RejectedExecutionHandler.
+
+**Завершение:** `shutdown()` (мягко) → `awaitTermination(30s)` → `shutdownNow()` (interrupt).
+
+---
+
+## 🔹 Future и CompletableFuture
+
+**Future — ограничения:**
+- `get()` блокирует поток — тратим поток на ожидание
+- Нельзя объединить несколько Future
+- Нельзя добавить callback
+- Нельзя построить цепочку
+
+**CompletableFuture решает всё:**
+```java
+// Создание
+CompletableFuture.supplyAsync(() -> fetchUser(id), executor)
+
+// Цепочка
+    .thenApply(user -> enrich(user))          // трансформация
+    .thenAccept(user -> save(user))            // потребление
+    .exceptionally(ex -> fallback)             // ошибка
+
+// Объединение параллельных запросов
+CompletableFuture.allOf(cf1, cf2, cf3)
+    .thenApply(v -> combine(cf1.join(), cf2.join(), cf3.join()))
+
+// Первый готовый
+CompletableFuture.anyOf(cf1, cf2, cf3)
+```
+
+**get() vs join():** `get()` бросает checked exceptions, `join()` — unchecked `CompletionException`. В лямбдах удобнее `join()`.
+
+**Правило:** всегда передавай явный `executor` в `supplyAsync`. Иначе используется `ForkJoinPool.commonPool()` — общий на всё приложение, можно заблокировать.
+
+---
+
+## 🔹 Потокобезопасные коллекции
+
+| Задача | Что использовать |
+|--------|-----------------|
+| Thread-safe Map | `ConcurrentHashMap` |
+| Map с порядком | `Collections.synchronizedMap(new LinkedHashMap<>())` |
+| Список, чтений >> записей | `CopyOnWriteArrayList` |
+| Очередь Producer-Consumer | `ArrayBlockingQueue` / `LinkedBlockingQueue` |
+| Lock-free очередь | `ConcurrentLinkedQueue` |
+
+**ConcurrentHashMap:** null запрещён, `compute/merge/putIfAbsent` — атомарны, итератор — weakly consistent (не бросает ConcurrentModificationException).
+
+**BlockingQueue методы:**
+- `put(e)` — блокирует если полная
+- `take()` — блокирует если пустая
+- Паттерн Poison Pill — специальный sentinel в очереди для сигнала завершения
+
+---
+
+## 🔹 Virtual Threads (Java 21)
+
+| | Platform Thread | Virtual Thread |
+|-|-----------------|----------------|
+| Стек | ~1MB | Несколько KB |
+| Создание | Дорого | Дёшево |
+| Количество | Тысячи | Миллионы |
+| При блокировке | OS поток простаивает | Отмонтируется (mount/unmount) |
 
 ```java
-// 1. Через фабрику
-Thread vThread = Thread.ofVirtual().start(() -> {
-    System.out.println("Virtual thread");
-});
+// Создание
+Thread.ofVirtual().start(() -> doWork());
 
-// 2. Через ExecutorService
+// Через executor (рекомендуется)
 try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
-    executor.submit(() -> {
-        System.out.println("Task in virtual thread");
-    });
+    executor.submit(() -> handleRequest());
 }
 ```
 
-### Когда использовать
+**Когда использовать:** I/O-bound задачи (HTTP, БД, файлы). **Не подходит** для CPU-bound (не ускорит вычисления).
 
-- Высококонкурентные приложения (миллионы запросов)
-- I/O-bound операции (HTTP запросы, БД)
-- Когда нужно много блокирующих вызовов
-
-> [!tip] Virtual Threads vs Reactive
-- Virtual threads — пишем как синхронный код
-- Reactive — сложный код с callbacks/mono/flux
+**Virtual vs Reactive:** виртуальные потоки — пишем обычный синхронный код. Reactive (WebFlux, Mono/Flux) — сложнее, но больше контроля над backpressure.
 
 ---
 
-## 🔹 Race Condition
+## 🔹 Типичные вопросы и ответы
 
-**Race Condition** — состояние гонки, когда результат зависит от порядка выполнения потоков.
+**Q: Чем отличается synchronized от ReentrantLock?**
+A: synchronized — встроенный, автоматический unlock, нет tryLock. ReentrantLock — явный lock/unlock (в finally!), есть tryLock с таймаутом, lockInterruptibly, fair mode, Condition.
 
-### Пример
+**Q: Что такое happens-before?**
+A: Гарантия JMM: если A happens-before B, то все изменения от A видны при выполнении B. Устанавливается через synchronized, volatile, Thread.start/join.
 
-```java
-int counter = 0;
+**Q: Почему volatile недостаточно для count++?**
+A: `count++` — это READ-ADD-WRITE. volatile гарантирует видимость каждого отдельного чтения и записи, но не атомарность всей операции в целом. Между READ и WRITE другой поток может изменить значение.
 
-// Поток 1: counter++
-// Поток 2: counter++
+**Q: Что произойдёт если не вызвать shutdown() у ExecutorService?**
+A: Потоки в пуле — user threads. JVM не завершится пока они живы. Приложение зависнет после завершения main().
 
-// Возможный результат: 1 вместо 2
-// counter++ не атомарно: read → modify → write
-```
+**Q: В чём разница put() и offer() у BlockingQueue?**
+A: `put()` блокирует поток если очередь полна — ждёт места. `offer()` возвращает false если нет места, не блокирует. `offer(e, timeout, unit)` — с таймаутом.
 
-### Решения
+**Q: Как работает ConcurrentHashMap в Java 8+?**
+A: При записи — CAS или lock на один бакет (голову списка). При чтении — без блокировки. В отличие от Java 7 где были сегменты (16 по умолчанию).
 
-1. **synchronized**
-```java
-synchronized (lock) {
-    counter++;
-}
-```
-
-2. **AtomicInteger**
-```java
-AtomicInteger counter = new AtomicInteger(0);
-counter.incrementAndGet();
-```
-
-3. **LongAdder** (для высоких нагрузок)
-```java
-LongAdder counter = new LongAdder();
-counter.increment();
-```
+**Q: Когда использовать LongAdder вместо AtomicLong?**
+A: Когда очень много потоков одновременно инкрементируют (высокая конкуренция) и читать значение нужно редко. LongAdder хранит несколько ячеек → меньше CAS-конкуренции. AtomicLong лучше когда часто читаешь текущее значение.
 
 ---
 
-## 🔹 Deadlock
-
-**Deadlock** — взаимная блокировка, когда потоки ждут друг друга бесконечно.
-
-### Условия возникновения (4 условия)
-
-1. **Mutual Exclusion** — ресурс может быть занят только одним потоком
-2. **Hold and Wait** — поток удерживает ресурс и ждёт другой
-3. **No Preemption** — ресурс нельзя отобрать принудительно
-4. **Circular Wait** — циклическое ожидание (A ждёт B, B ждёт A)
-
-### Пример
-
-```java
-Object lock1 = new Object();
-Object lock2 = new Object();
-
-// Поток 1
-synchronized (lock1) {
-    Thread.sleep(100);
-    synchronized (lock2) {
-        // ...
-    }
-}
-
-// Поток 2
-synchronized (lock2) {
-    Thread.sleep(100);
-    synchronized (lock1) {
-        // ...
-    }
-}
-```
-
-### Как избежать
-
-- Всегда захватывать блокировки в одном порядке
-- Использовать tryLock() с таймаутом
-- Минимизировать критические секции
-
----
-
-## 🔹 Итог
-
-> [!tip] Шпаргалка
-> - **synchronized** — монитор, блокировка, deadlock risk
-> - **volatile** — visibility, без atomicity, флаги
-> - **Atomic** — CAS, без блокировок, счётчики
-> - **ConcurrentHashMap** — fine-grained locking, атомарные методы
-> - **ExecutorService** — пул потоков, Callable/Future
-> - **Virtual Threads** — лёгкие, миллионы, Java 21+
+## 🔹 Шпаргалка
 
 ```
-synchronized:
-метод/блок → монитор → BLOCKED если занят
+Состояния: NEW → RUNNABLE ⇄ BLOCKED/WAITING/TIMED_WAITING → TERMINATED
+  BLOCKED = ждёт synchronized монитор
+  WAITING = сам решил подождать (wait/join)
 
-volatile:
-visibility гарантирован, atomicity — нет
+Race Condition:
+  Atomicity: count++ = 3 операции → нужен synchronized / Atomic
+  Visibility: кэши CPU → нужен volatile / synchronized
 
-Atomic:
-CAS (compare-and-set), без блокировок
+volatile = только visibility. count++ volatile — всё равно не атомарно!
 
-ConcurrentHashMap:
-Java 7: сегменты, Java 8+: бакеты
+synchronized → Atomic → LongAdder (по возрастанию конкуренции)
 
-ExecutorService:
-Fixed/Cached/Single/Scheduled пулы
+Deadlock: захватывать локи в одном порядке / tryLock(timeout)
+Livelock: random backoff
+Starvation: ReentrantLock(true) — fair mode
 
-Virtual Threads:
-лёгкие, mount/unmount при блокировке
+ReentrantLock: unlock() в finally ВСЕГДА
+ReadWriteLock: много читателей параллельно
+StampedLock: оптимистичное чтение, не реентерабелен
+
+ExecutorService: никогда не создавай потоки вручную
+  В продакшене: ThreadPoolExecutor с ArrayBlockingQueue
+  Завершение: shutdown() → awaitTermination() → shutdownNow()
+
+CompletableFuture vs Future:
+  Future.get() блокирует — плохо
+  CF: цепочки, allOf/anyOf, exceptionally, без блокировок
+  В CF: всегда явный executor в supplyAsync
+
+ConcurrentHashMap: null запрещён, compute/merge атомарны
+BlockingQueue: put()/take() блокируют — идеально для Producer-Consumer
+
+Virtual Threads (Java 21): миллионы потоков, I/O-bound, mount/unmount при блокировке
 ```

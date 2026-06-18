@@ -1,9 +1,8 @@
-# Collections
-
 > **Теги:** #interviews #java-core #collections #конспект
-
 > [!abstract] Связи
-> [[main]] | [[Interviews]]
+> [[main]] | [[Interviews]] | [[Collections_Index]]
+
+# Collections — Вопросы на собесе
 
 ---
 
@@ -11,238 +10,239 @@
 
 ```
 Iterable
-    └── Collection
-            ├── List
-            │   ├── ArrayList
-            │   └── LinkedList
-            ├── Queue
-            │   ├── Deque
-            │   │   ├── LinkedList
-            │   │   └── ArrayDeque
-            │   └── PriorityQueue
-            └── Set
-                ├── TreeSet
-                ├── HashSet
-                ├── LinkedHashSet
-                └── EnumSet
+  └── Collection
+        ├── List       — упорядочен, дубликаты разрешены
+        │   ├── ArrayList
+        │   └── LinkedList
+        ├── Set        — уникальные элементы
+        │   ├── HashSet
+        │   ├── LinkedHashSet
+        │   └── TreeSet
+        └── Queue      — FIFO / приоритет
+            ├── PriorityQueue
+            └── Deque
+                ├── ArrayDeque
+                └── LinkedList
+
+Map (не Collection!)
+  ├── HashMap
+  ├── LinkedHashMap
+  ├── TreeMap
+  └── ConcurrentHashMap
 ```
 
-**Map** — не наследуется от Collection, стоит особняком:
-
-```
-Map
-    ├── TreeMap
-    ├── HashMap
-    ├── LinkedHashMap
-    └── Hashtable
-```
-
-> [!note] Map ≠ Collection
-> Map не наследуется от Iterable, потому что это не коллекция, а карта пар ключ-значение.
+> Map не наследуется от Collection — это карта пар ключ-значение, а не просто набор элементов.
 
 ---
 
 ## 🔹 ArrayList vs LinkedList
 
-### ArrayList
+| | ArrayList | LinkedList |
+|-|-----------|------------|
+| Внутри | Object[] массив | Двусвязный список Node |
+| get(i) | **O(1)** | O(n) |
+| add в конец | O(1) амортизированно | O(1) |
+| add(i, e) в середину | O(n) — сдвиг | O(n) — найти позицию |
+| remove(i) | O(n) — сдвиг | O(n) — найти позицию |
+| Память | Компактнее | Больше (2 ссылки на узел) |
+| Кэш CPU | Хорошо | Плохо (узлы разбросаны) |
 
-**Устройство:** динамический массив
+**Вопрос: "Когда LinkedList лучше?"**
+Честный ответ: почти никогда. Даже как Deque — `ArrayDeque` быстрее. LinkedList полезен если нужен null-элемент в Deque или реально часто добавляешь в начало с уже известным итератором.
 
-```
-Создание: массив размером 10
-При заполнении: увеличение в 1.5 раза
-├── Создаётся новый массив большего размера
-├── Элементы копируются из старого в новый
-└── Новый элемент добавляется
-```
-
-**Асимптотика:**
-
-| Операция | Сложность | Почему |
-|----------|-----------|--------|
-| `add(e)` (в конец) | O(1)* | Константная, но при resize — O(n) |
-| `get(i)` | O(1) | Массив в памяти единым блоком, быстрый доступ по индексу |
-| `set(i, e)` | O(1) | Быстрая замена по индексу |
-| `remove(i)` | O(n) | Нужно сдвинуть все элементы после удалённого |
-
-*амортизированная
-
-### LinkedList
-
-**Устройство:** двусвязный список узлов
-
-```
-Node:
-├── value
-├── next → следующий узел
-└── prev → предыдущий узел
-```
-
-**Асимптотика:**
-
-| Операция | Сложность | Почему |
-|----------|-----------|--------|
-| `add(e)` (в конец) | O(1) | Просто добавляем ссылку от хвоста |
-| `get(i)` | O(n) | Нужно пройти по ссылкам от головы до индекса |
-| `add(i, e)` | O(n) | Сначала дойти до индекса, потом изменить ссылки |
-| `remove(i)` | O(n) | Сначала дойти до индекса, потом перелинковать |
-
-### Сравнение
-
-| Характеристика | ArrayList | LinkedList |
-|----------------|-----------|------------|
-| Доступ по индексу | O(1) — быстро | O(n) — медленно |
-| Вставка/удаление в конец | O(1)* | O(1) |
-| Вставка/удаление в середину | O(n) — сдвиг | O(n) — поиск + O(1) перелинковка |
-| Память | Единый блок | Разрозненные узлы + ссылки |
-| Использование на практике | Почти всегда | Редко (когда нужна Queue/Deque) |
-
-> [!tip] Когда использовать LinkedList
-- Когда нужен интерфейс Deque (двусторонняя очередь)
-- Когда много операций удаления при итерации
-- Но на практике чаще используют ArrayDeque для Deque
+**ArrayList расширение:** при заполнении создаётся массив × 1.5, элементы копируются — O(n). Если знаешь размер заранее — `new ArrayList<>(n)`.
 
 ---
 
 ## 🔹 HashMap под капотом
 
-**Устройство:** массив бакетов → каждый бакет содержит узлы (Node)
+**Структура:** `Node[] table` — массив бакетов. Каждый Node хранит `hash, key, value, next`.
 
-```
-HashMap:
-├── buckets[] (массив)
-│   ├── Node [key, value, hash, next]
-│   ├── Node → Node → Node (коллизия)
-│   └── ...
-```
+**put(key, value):**
+1. `hash(key)` — `hashCode() ^ (h >>> 16)` — XOR со сдвигом, чтобы старшие биты влияли на бакет
+2. Бакет: `hash & (capacity - 1)` — быстрый аналог `%`, работает т.к. capacity = степень двойки
+3. Пуст → новый Node. Тот же ключ → перезапись. Коллизия → в цепочку
+4. Список в бакете ≥ 8 нод **И** таблица ≥ 64 элементов → **treeify** (красно-чёрное дерево)
 
-### Процесс добавления элемента
+**Параметры по умолчанию:**
+- `capacity = 16` (всегда степень двойки)
+- `loadFactor = 0.75` → rehash при 12 элементах
+- `TREEIFY_THRESHOLD = 8`, `UNTREEIFY_THRESHOLD = 6`
 
-```
-1. Вычисляем hashCode ключа
-2. Применяем хеш-функцию: index = hash % buckets.length
-3. Если бакет пуст → создаём новый Node
-4. Если бакет занят (коллизия):
-   - До Java 8: linked list в бакете
-   - Java 8+: при 8+ элементах → красно-чёрное дерево (O(log n))
-5. Если ключ уже существует → перезаписываем value
-```
-
-### Коллизии
-
-**До Java 8:** linked list в бакете → O(n) при поиске
-
-**Java 8+:** при 8+ элементах в бакете → дерево → O(log n)
-
-> [!tip] Treeify
-- Порог: 8 элементов в бакете
-- Обратно в linked list при 6 элементах
-- Улучшение для случаев с плохой хеш-функцией
+**Rehash:** capacity × 2, все ноды перераспределяются — O(n). Задавай capacity заранее: `new HashMap<>(expectedSize / 0.75 + 1)`.
 
 ---
 
-## 🔹 equals и hashCode контракт
+## 🔹 equals() и hashCode() — контракт
 
-### Требования к ключу HashMap
-
-1. **Immutable** — объект не должен меняться после добавления в Map
-2. **Переопределить equals()** — корректное сравнение по полям
-3. **Переопределить hashCode()** — должен использовать те же поля, что и equals
-
-### Контракт
-
-```java
-// Если equals() возвращает true для двух объектов,
-// то hashCode() должен возвращать одно и то же значение
-
-a.equals(b) == true  →  a.hashCode() == b.hashCode()
-
-// Обратное не обязательно:
-a.hashCode() == b.hashCode()  ↛  a.equals(b) == true
+```
+Правило: a.equals(b) == true  →  a.hashCode() == b.hashCode()
+Обратное НЕ обязательно: одинаковый hash ≠ равные объекты (коллизия — нормально)
 ```
 
-### Почему immutable ключи?
+**Почему нужны оба:**
+- HashMap сначала ищет бакет по `hashCode()`, потом ищет в цепочке через `equals()`
+- Если переопределить только `equals()` — два "равных" объекта попадут в разные бакеты → `get()` не найдёт
+- Если переопределить только `hashCode()` — попадут в один бакет, но `equals()` скажет что они разные → дубликаты в Map
 
-Если ключ изменится после добавления в Map:
-- hashCode изменится
-- При поиске вычисляется новый hashCode → другой бакет
-- Элемент не найдётся
-
-### Пример реализации
+**Ключи должны быть effectively immutable** — если ключ изменится, его `hashCode()` изменится, и объект потеряется в Map.
 
 ```java
-public class User {
-    private final String name;
-    private final String surname;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(name, user.name) &&
-               Objects.equals(surname, user.surname);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname);
-    }
+// Правильная реализация через Objects.hash()
+@Override public int hashCode() { return Objects.hash(name, age); }
+@Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof User u)) return false;
+    return age == u.age && Objects.equals(name, u.name);
 }
 ```
 
-> [!warning] String как ключ
-- String immutable → идеально подходит
-- Но можно использовать и кастомный immutable класс
+---
+
+## 🔹 LinkedHashMap — когда нужен порядок
+
+**Внутри:** HashMap + двусвязный список поверх нод (поля `before`/`after`).
+
+Два режима:
+- `new LinkedHashMap<>()` — **порядок вставки**
+- `new LinkedHashMap<>(16, 0.75f, true)` — **порядок доступа** (LRU)
+
+**LRU Cache** через `removeEldestEntry`:
+```java
+new LinkedHashMap<>(capacity, 0.75f, true) {
+    protected boolean removeEldestEntry(Map.Entry e) {
+        return size() > capacity; // старейший удаляется автоматически
+    }
+};
+```
+
+Сложность: те же O(1) что у HashMap. Память чуть больше (+2 ссылки на ноду).
+
+---
+
+## 🔹 TreeMap — когда нужна сортировка
+
+**Внутри:** красно-чёрное дерево. Ключи всегда отсортированы.
+
+**Сложность:** O(log n) для всех операций.
+
+**Null ключи:** запрещены (ключи сравниваются, `compareTo(null)` → NPE).
+
+**Навигационные методы — главное отличие от HashMap:**
+```java
+TreeMap<Integer, String> map = new TreeMap<>();
+map.firstKey() / map.lastKey()          // min / max
+map.floorKey(5)                         // наибольший ключ ≤ 5
+map.ceilingKey(5)                       // наименьший ключ ≥ 5
+map.headMap(5) / map.tailMap(5)         // всё < 5 / всё ≥ 5
+map.subMap(3, 7)                        // [3, 7)
+map.pollFirstEntry() / pollLastEntry()  // удалить и вернуть крайний
+```
+
+**Когда использовать:** нужна Map с отсортированными ключами, поиск ближайшего ключа, работа с диапазонами.
 
 ---
 
 ## 🔹 Set реализации
 
-| Реализация | Под капот | Особенности |
-|------------|-----------|-------------|
-| **TreeSet** | Красно-чёрное дерево | Упорядочен, O(log n) операции |
-| **HashSet** | HashMap | Неупорядочен, O(1) операции |
-| **LinkedHashSet** | HashMap + связи | Сохраняет порядок вставки |
-| **EnumSet** | Bit vector | Оптимизирован для enum |
+| | HashSet | LinkedHashSet | TreeSet |
+|-|---------|---------------|---------|
+| Внутри | HashMap | HashMap + список | Красно-чёрное дерево |
+| Порядок | Нет | Порядок вставки | Отсортированный |
+| contains | **O(1)** | **O(1)** | O(log n) |
+| Null | ✅ | ✅ | ❌ |
+
+**Главное преимущество Set перед List:** `contains()` — O(1) у HashSet против O(n) у ArrayList.
+
+**HashSet внутри — это просто HashMap**, где элементы — ключи, а значение — константа `PRESENT`.
 
 ---
 
-## 🔹 Map реализации
+## 🔹 Queue, Deque, ArrayDeque, PriorityQueue
 
-| Реализация | Под капот | Особенности |
-|------------|-----------|-------------|
-| **TreeMap** | Красно-чёрное дерево | Ключи отсортированы, O(log n) |
-| **HashMap** | Hash table | Неупорядочен, O(1) операции |
-| **LinkedHashMap** | Hash table + связи | Сохраняет порядок вставки |
-| **Hashtable** | Hash table | Синхронизированная, устарела |
+**Queue — FIFO.** Два набора методов:
+- С исключением: `add / element / remove`
+- Без исключения: `offer / peek / poll` ← используй в продакшене
 
-> [!tip] Hashtable vs ConcurrentHashMap
-- Hashtable — устарела, все методы synchronized
-- ConcurrentHashMap — современная, finer-grained locking
+**Deque** — двусторонняя очередь. Три роли:
+```
+FIFO:   offer(e) / poll()              — хвост / голова
+LIFO:   push(e) / pop()                — голова / голова
+Deque:  offerFirst/Last, pollFirst/Last
+```
+
+**ArrayDeque** — кольцевой массив, O(1) на обоих концах. **Быстрее LinkedList** (кэш CPU). Не принимает null. **Используй вместо Stack**.
+
+**PriorityQueue** — бинарная куча (min-heap по умолчанию):
+- `offer(e)` — O(log n), `peek()` — O(1), `poll()` — O(log n)
+- Max-heap: `new PriorityQueue<>(Comparator.reverseOrder())`
+- Итерация через for-each **не даёт** отсортированный порядок — только `poll()` в цикле
+- Классика: k наибольших элементов, алгоритм Дейкстры
 
 ---
 
-## 🔹 Итог
+## 🔹 ConcurrentHashMap vs synchronizedMap
 
-> [!tip] Шпаргалка
-> - **ArrayList** — O(1) get/set, O(n) remove, используй по умолчанию
-> - **LinkedList** — O(n) get, используй только для Deque
-> - **HashMap** — массив бакетов, коллизии → tree при 8+ элементах
-> - **equals/hashCode** — используй одинаковые поля, immutable ключи
-> - **TreeSet/TreeMap** — красно-чёрное дерево, O(log n), упорядочены
-> - **HashSet/HashMap** — hash table, O(1), неупорядочены
+| | synchronizedMap | ConcurrentHashMap |
+|-|-----------------|-------------------|
+| Блокировка | Один lock на всё | CAS + lock на бакет |
+| Чтение | Блокируется | Без блокировки |
+| Null ключ | ✅ | ❌ |
+| Производительность | Плохо при конкуренции | Хорошо |
+
+**Атомарные операции** (без доп. синхронизации):
+```java
+map.putIfAbsent(key, value)
+map.computeIfAbsent(key, k -> new ArrayList<>())
+map.merge(key, 1, Integer::sum)  // подсчёт частоты
+```
+
+---
+
+## 🔹 Типичные вопросы и ответы
+
+**Q: Что будет если изменить ключ HashMap после добавления?**
+A: Объект потеряется — `hashCode()` изменится, HashMap будет искать в другом бакете.
+
+**Q: Почему capacity HashMap всегда степень двойки?**
+A: Чтобы заменить дорогой `% capacity` на быстрый `& (capacity-1)` — побитовая операция в разы быстрее.
+
+**Q: Чем отличается fail-fast от fail-safe итератора?**
+A: `fail-fast` (ArrayList, HashMap) — бросает `ConcurrentModificationException` при изменении во время итерации. `fail-safe` (ConcurrentHashMap, CopyOnWriteArrayList) — итерирует по снимку, не бросает исключение.
+
+**Q: Как правильно удалять элементы при итерации?**
+A: `iterator.remove()`, `list.removeIf(pred)`, или итерация с конца по индексу. Никогда не `list.remove()` внутри for-each.
+
+**Q: В чём разница ArrayList и Vector?**
+A: Vector устарел — все методы `synchronized`, медленно. Используй ArrayList + внешняя синхронизация или CopyOnWriteArrayList.
+
+---
+
+## 🔹 Шпаргалка
 
 ```
-ArrayList vs LinkedList:
-get: O(1) vs O(n)
-remove: O(n) vs O(n) (но LinkedList быстрее при итерации)
+List:
+  ArrayList  — get O(1), add конец O(1), insert/remove O(n). Default.
+  LinkedList — get O(n). Только для Deque и то хуже ArrayDeque.
 
-HashMap:
-hash → index → bucket
-коллизия: linked list → tree (Java 8+, 8+ элементов)
+Map:
+  HashMap        — O(1), порядка нет, null ключ ✅
+  LinkedHashMap  — O(1), порядок вставки / LRU-кэш
+  TreeMap        — O(log n), отсортирован, floor/ceiling/subMap, null ❌
+  ConcurrentHashMap — потокобезопасен, null ❌
 
-equals/hashCode:
-a.equals(b) → a.hashCode() == b.hashCode()
-ключ должен быть immutable
+Set = Map без value. HashSet/LinkedHashSet/TreeSet — те же правила.
+
+Queue / Deque:
+  ArrayDeque    — O(1) оба конца, быстрее LinkedList, null ❌. Default Deque/Stack.
+  PriorityQueue — O(log n) offer/poll, O(1) peek. Min-heap по умолчанию.
+
+equals + hashCode:
+  equals → одинаковый hashCode (обратное необязательно)
+  Ключи HashMap должны быть effectively immutable
+
+HashMap internals:
+  capacity=16, loadFactor=0.75, rehash при 12 элементах
+  treeify при ≥8 нод в бакете И ≥64 элементов в таблице
+  hash = hashCode() ^ (h >>> 16)  — XOR для лучшего распределения
 ```

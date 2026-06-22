@@ -202,6 +202,7 @@
   },
   "active": "fc3360bf62445fc7",
   "lastOpenFiles": [
+    "java/programming language/11_JVM_Internals.md",
     "interviews/architecture/17_SystemDesign.md",
     "interviews/spring-jpa/12_JPA_Hibernate.md",
     "algorithms/10_Graphs.md",
@@ -228,7 +229,6 @@
     "java/programming language/08_Functional/Functional_Index.md",
     "java/programming language/08_Functional/04_MethodReferences.md",
     "java/programming language/08_Functional/03_Optional.md",
-    "java/programming language/08_Functional/02_StreamAPI.md",
     "java/programming language/08_Functional",
     "java/framework and library/framework/sed8xsXrb",
     "java/framework and library/framework/sedzsndSG",

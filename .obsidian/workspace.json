@@ -202,6 +202,8 @@
   },
   "active": "fc3360bf62445fc7",
   "lastOpenFiles": [
+    "java/framework and library/framework/Spring_Core.md",
+    "java/framework and library/framework/Hibernate.md",
     "interviews/architecture/15_Patterns.md",
     "interviews/java-core/07_Streams.md",
     "java/programming language/11_JVM_Internals.md",
@@ -227,8 +229,6 @@
     "java/programming language/04_MethodReferences.md",
     "java/programming language/03_Optional.md",
     "java/programming language/02_StreamAPI.md",
-    "java/programming language/01_Lambda_FunctionalInterfaces.md",
-    "java/programming language/08_Functional/Functional_Index.md",
     "java/programming language/08_Functional",
     "java/framework and library/framework/sed8xsXrb",
     "java/framework and library/framework/sedzsndSG",

@@ -389,3 +389,198 @@ Constructor injection           → ✅ deps
 singleton (default) | prototype → scopes
 @Primary | @Qualifier           → выбор bean
 ```
+
+---
+
+## 🔹 Жизненный цикл бина — подробно
+
+### BeanPostProcessor — перехват каждого бина
+
+`BeanPostProcessor` позволяет вмешаться в инициализацию **каждого** бина в контейнере. Именно через него работают `@Autowired`, `@PostConstruct`, AOP-прокси.
+
+```java
+public interface BeanPostProcessor {
+    // вызывается ДО @PostConstruct / afterPropertiesSet
+    Object postProcessBeforeInitialization(Object bean, String beanName);
+
+    // вызывается ПОСЛЕ @PostConstruct / afterPropertiesSet
+    Object postProcessAfterInitialization(Object bean, String beanName);
+}
+```
+
+**Полный порядок жизненного цикла с BeanPostProcessor:**
+
+```
+1.  Создание экземпляра (конструктор)
+2.  Populate properties (DI: @Autowired поля, setter injection)
+3.  BeanNameAware.setBeanName()
+4.  BeanFactoryAware.setBeanFactory()
+5.  ApplicationContextAware.setApplicationContext()
+6.  BeanPostProcessor.postProcessBeforeInitialization()  ← @PostConstruct обрабатывается здесь
+7.  InitializingBean.afterPropertiesSet()
+8.  @Bean(initMethod = "...")
+9.  BeanPostProcessor.postProcessAfterInitialization()   ← AOP Proxy создаётся здесь!
+    ↓
+    Bean готов к использованию
+    ↓
+10. @PreDestroy (при shutdown контекста)
+11. DisposableBean.destroy()
+12. @Bean(destroyMethod = "...")
+```
+
+> [!note] AOP Proxy создаётся в postProcessAfterInitialization
+> `AnnotationAwareAspectJAutoProxyCreator` — это `BeanPostProcessor`. Он обёртывает бин в CGLIB или JDK proxy на шаге 9. Именно поэтому `@Transactional` / `@Cacheable` работают: к моменту когда бин попадает в контейнер — он уже является прокси.
+
+```java
+// Свой BeanPostProcessor — пример логирования создания бинов
+@Component
+public class LoggingBeanPostProcessor implements BeanPostProcessor {
+
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) {
+        log.debug("Before init: {}", beanName);
+        return bean; // обязательно вернуть bean (можно вернуть другой объект!)
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) {
+        log.debug("After init: {} class={}", beanName, bean.getClass().getSimpleName());
+        return bean;
+    }
+}
+```
+
+> [!warning] BeanPostProcessor и circular dependencies
+> BPP регистрируются и создаются раньше обычных бинов. Если BPP зависит от обычного бина — возможна проблема с circular dependency. Spring предупредит в логах: "Bean '...' is not eligible for getting processed by all BeanPostProcessors".
+
+---
+
+### BeanFactoryPostProcessor — изменение метаданных бинов
+
+Работает **до создания** бинов — изменяет их определения (BeanDefinition).
+
+```java
+public interface BeanFactoryPostProcessor {
+    void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory);
+}
+```
+
+**Встроенные реализации:**
+- `PropertySourcesPlaceholderConfigurer` — подставляет `${property}` из файлов properties
+- `ConfigurationClassPostProcessor` — обрабатывает `@Configuration`, `@Bean`, `@ComponentScan`
+
+```java
+// Свой BeanFactoryPostProcessor — заменить scope всех бинов на prototype
+@Component
+public class PrototypeScopePostProcessor implements BeanFactoryPostProcessor {
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory factory) {
+        for (String name : factory.getBeanDefinitionNames()) {
+            BeanDefinition bd = factory.getBeanDefinition(name);
+            bd.setScope(BeanDefinition.SCOPE_PROTOTYPE); // изменить scope
+        }
+    }
+}
+```
+
+---
+
+### Как работает @Configuration с CGLIB
+
+Когда `@Bean` методы вызываются несколько раз — в обычном классе каждый вызов создаст новый объект. Spring решает это через CGLIB.
+
+```java
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public ServiceA serviceA() {
+        return new ServiceA(serviceB()); // вызываем serviceB() внутри
+    }
+
+    @Bean
+    public ServiceB serviceB() {
+        return new ServiceB();
+    }
+}
+```
+
+Spring создаёт **CGLIB подкласс** `AppConfig`. В нём `serviceB()` перехватывается: при повторном вызове возвращается уже созданный singleton из контейнера, а не новый объект.
+
+```
+Вызов serviceA() → serviceB() внутри → CGLIB перехватил
+                                       → getBean("serviceB") из контейнера
+                                       → тот же экземпляр
+```
+
+> [!note] @Configuration vs @Component для @Bean
+> ```java
+> @Configuration  // CGLIB proxy — межбиновые вызовы возвращают singleton
+> class Config {
+>     @Bean ServiceA a() { return new ServiceA(b()); } // b() → singleton из контейнера
+>     @Bean ServiceB b() { return new ServiceB(); }
+> }
+>
+> @Component      // НЕТ CGLIB proxy — обычный класс
+> class Config {
+>     @Bean ServiceA a() { return new ServiceA(b()); } // b() → НОВЫЙ объект каждый раз!
+>     @Bean ServiceB b() { return new ServiceB(); }
+> }
+> ```
+> Используй `@Configuration` когда `@Bean` методы вызывают другие `@Bean` методы.
+
+---
+
+### Порядок создания бинов — @DependsOn и @Lazy
+
+```java
+// @DependsOn — явно указать что бин должен создаться после другого
+@Component
+@DependsOn("databaseInitializer")
+public class UserRepository { }
+
+// @Lazy — создать бин при первом обращении, а не при старте контекста
+@Service
+@Lazy
+public class HeavyService { }
+
+// @Lazy на точке инжекции — инжектировать proxy, создать при первом вызове
+@Service
+public class OrderService {
+    @Lazy
+    @Autowired
+    private HeavyService heavyService; // создастся при первом вызове метода
+}
+```
+
+---
+
+### ObjectProvider — ленивое и опциональное получение бинов
+
+```java
+@Service
+public class ReportService {
+
+    // Не бросит исключение если бин не найден
+    private final ObjectProvider<PdfRenderer> pdfRenderer;
+
+    public ReportService(ObjectProvider<PdfRenderer> pdfRenderer) {
+        this.pdfRenderer = pdfRenderer;
+    }
+
+    public byte[] render(Report report) {
+        return pdfRenderer.getIfAvailable(() -> new DefaultPdfRenderer())
+                          .render(report);
+    }
+}
+```
+
+`ObjectProvider<T>` — ленивый, не бросает исключений при отсутствии бина, поддерживает несколько реализаций:
+
+```java
+pdfRenderer.getIfAvailable()          // null если нет
+pdfRenderer.getIfAvailable(defaultFn) // default supplier если нет
+pdfRenderer.ifAvailable(consumer)     // выполнить если есть
+pdfRenderer.stream()                  // все реализации как Stream
+```

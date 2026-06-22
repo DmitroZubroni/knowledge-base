@@ -376,3 +376,224 @@ CascadeType.ALL + orphanRemoval    → composition
 ddl-auto: validate (prod)          → + Flyway
 persist / merge / remove / detach  → lifecycle
 ```
+
+---
+
+## 🔹 Кэш первого уровня (L1) — Session Cache
+
+L1 кэш — это **Persistence Context**. Всегда включён, область видимости — одна сессия (транзакция).
+
+```java
+@Transactional
+public void example() {
+    User u1 = userRepo.findById(1L).orElseThrow(); // SELECT выполняется
+    User u2 = userRepo.findById(1L).orElseThrow(); // SELECT НЕ выполняется — из L1!
+    System.out.println(u1 == u2); // true — тот же объект
+
+    u1.setName("Alice"); // dirty checking — изменение отслеживается
+    // при commit: автоматически UPDATE
+}
+// После завершения @Transactional — L1 кэш очищается
+```
+
+**Что хранит L1:** снимок (snapshot) каждой loaded entity для dirty checking.
+
+**Ловушка:** в batch-обработке (1 транзакция, 10 000 записей) L1 кэш растёт бесконечно → OOM.
+
+```java
+@Transactional
+public void batchProcess(List<Long> ids) {
+    for (int i = 0; i < ids.size(); i++) {
+        process(entityRepo.findById(ids.get(i)).orElseThrow());
+        if (i % 100 == 0) {
+            entityManager.flush();  // сбросить изменения в БД
+            entityManager.clear();  // очистить L1 кэш
+        }
+    }
+}
+```
+
+---
+
+## 🔹 Кэш второго уровня (L2) — Shared Cache
+
+L2 кэш живёт на уровне `SessionFactory` — **разделяется между всеми сессиями**. Подходит для редко меняющихся справочных данных.
+
+### Настройка (EhCache / Caffeine через JCache)
+
+```yaml
+# application.yml
+spring:
+  jpa:
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region.factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
+        javax:
+          cache:
+            missing_cache_strategy: create  # создать регион если нет конфигурации
+```
+
+```xml
+<!-- pom.xml -->
+<dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-jcache</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.github.ben-manes.caffeine</groupId>
+    <artifactId>caffeine</artifactId>
+</dependency>
+```
+
+### Стратегии конкурентного доступа
+
+```java
+@Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Country {
+    @Id private Long id;
+    private String name;
+    private String code;
+}
+```
+
+| Стратегия | Поведение | Когда |
+|-----------|-----------|-------|
+| `READ_ONLY` | Нет блокировок. Исключение при попытке изменить. | Иммутабельные справочники (страны, категории) |
+| `NONSTRICT_READ_WRITE` | Нет транзакционных гарантий. Короткое окно несогласованности. | Редко меняемые, допустима небольшая задержка |
+| `READ_WRITE` | Soft-лок при обновлении. Согласованность. | Часто читается, иногда обновляется |
+| `TRANSACTIONAL` | Полная транзакционная согласованность (JTA). | Транзакционные кэши (JBoss Cache) |
+
+> [!tip] Рекомендация
+> `READ_ONLY` — для справочников (страны, валюты, типы).
+> `READ_WRITE` — для сущностей которые иногда обновляются (профиль пользователя, настройки).
+
+### Инвалидация L2 кэша
+
+Hibernate автоматически инвалидирует L2 при `save()` / `delete()` через JPA. Но:
+- При **native SQL** запросах Hibernate не знает что изменилось → кэш не инвалидируется!
+- Решение: `@QueryHint` с `CacheMode.IGNORE` для native, или ручная очистка
+
+```java
+// Ручная инвалидация региона
+@Autowired
+private EntityManagerFactory emf;
+
+public void evictCache(Class<?> entityClass) {
+    emf.getCache().evict(entityClass);       // конкретная сущность
+    emf.getCache().evictAll();               // весь L2 кэш
+    emf.getCache().evict(entityClass, id);   // один объект по ID
+}
+
+// Или через Hibernate SessionFactory
+SessionFactory sf = emf.unwrap(SessionFactory.class);
+sf.getCache().evictEntityData(Country.class);
+```
+
+---
+
+## 🔹 Query Cache — кэш результатов запросов
+
+Query Cache хранит **список идентификаторов** результата запроса. При попадании в кэш — Hibernate загружает объекты по ID из L2 (или БД если нет в L2).
+
+> [!warning] Query Cache требует L2 Cache
+> Query Cache хранит только ID → загрузка объектов по ID идёт через L2. Без L2 — каждый объект будет загружен из БД отдельным запросом (N+1 эффект!). Используй Query Cache только вместе с L2.
+
+```yaml
+spring.jpa.properties.hibernate.cache.use_query_cache: true
+```
+
+```java
+// Включить кэширование конкретного запроса
+@QueryHints(@QueryHint(name = "org.hibernate.cacheable", value = "true"))
+@Query("SELECT c FROM Country c ORDER BY c.name")
+List<Country> findAllCached();
+
+// Или через EntityManager
+List<Country> countries = em.createQuery("SELECT c FROM Country c", Country.class)
+    .setHint("org.hibernate.cacheable", true)
+    .setHint("org.hibernate.cacheRegion", "countries.all") // именованный регион
+    .getResultList();
+```
+
+**Когда использовать Query Cache:**
+- Одинаковый запрос с одинаковыми параметрами выполняется часто
+- Данные редко меняются
+- Результат большой (много объектов)
+
+---
+
+## 🔹 Статистика кэша — мониторинг
+
+```yaml
+spring.jpa.properties.hibernate.generate_statistics: true
+logging.level.org.hibernate.stat: DEBUG
+```
+
+```java
+// Программный доступ к статистике
+@Autowired EntityManagerFactory emf;
+
+Statistics stats = emf.unwrap(SessionFactory.class).getStatistics();
+
+// L2 кэш
+System.out.printf("L2 hit ratio: %.2f%% (%d hits / %d misses)%n",
+    stats.getSecondLevelCacheHitCount() * 100.0 /
+        (stats.getSecondLevelCacheHitCount() + stats.getSecondLevelCacheMissCount()),
+    stats.getSecondLevelCacheHitCount(),
+    stats.getSecondLevelCacheMissCount()
+);
+
+// Query кэш
+System.out.printf("Query cache hits: %d, misses: %d%n",
+    stats.getQueryCacheHitCount(),
+    stats.getQueryCacheMissCount()
+);
+
+// Запросы
+System.out.println("Total queries: " + stats.getQueryExecutionCount());
+System.out.println("Slowest query: " + stats.getQueryExecutionMaxTime() + "ms");
+System.out.println("Slow query string: " + stats.getQueryExecutionMaxTimeQueryString());
+```
+
+**На что смотреть:**
+```
+Hit ratio L2 > 90%      → кэш работает эффективно
+Hit ratio L2 < 50%      → пересмотреть стратегию TTL или что кэшировать
+Query cache miss >> hit → возможно запросы с разными параметрами, кэш неэффективен
+getQueryExecutionMaxTime → длинные запросы для оптимизации
+```
+
+---
+
+## 🔹 L2 Cache vs Redis — когда что
+
+| | Hibernate L2 Cache | Redis |
+|-|--------------------|-------|
+| Область | JVM / кластер через JCache | Внешний сервис |
+| Прозрачность | Автоматически для Entity | Явное кодирование |
+| Инвалидация | Автоматическая при CUD | Ручная |
+| Распределённость | Через JCache (Hazelcast, Infinispan) | Нативно |
+| Типы данных | Только Entity | Любые |
+| Когда | Entity-level кэш прозрачно | Сложная логика, любые объекты |
+
+**Правило:** если нужно кэшировать JPA Entity прозрачно — L2. Если нужен кэш произвольных данных (DTO, результаты сложных вычислений, внешние API) — Redis + `@Cacheable`.
+
+```java
+// Комбинация: @Cacheable (Redis) для DTO + L2 (Hibernate) для Entity
+@Service
+public class ProductService {
+
+    // Spring Cache (Redis) — кэш DTO для API
+    @Cacheable(value = "products", key = "#id")
+    public ProductDTO findById(Long id) {
+        // Hibernate L2 кэш прозрачно применяется здесь при загрузке Entity
+        Product product = productRepository.findById(id).orElseThrow();
+        return ProductDTO.from(product);
+    }
+}
+```

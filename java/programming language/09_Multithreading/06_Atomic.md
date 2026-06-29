@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #atomic #cas #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[04_Synchronized]] | [[05_Volatile]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[04_Synchronized]] | [[05_Volatile]]
 
 # 06 — Atomic классы и CAS
 

@@ -1,6 +1,6 @@
 > **Теги:** #java #functional #lambda #streams #hub
 > [!abstract] Навигация
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 # 🔷 Functional Programming — Java
 

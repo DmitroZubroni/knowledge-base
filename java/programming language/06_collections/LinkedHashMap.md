@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #linkedhashmap #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> [[main]] | [[main Java]] | [[Collections_Index]]
 
 # LinkedHashMap — HashMap с памятью о порядке
 

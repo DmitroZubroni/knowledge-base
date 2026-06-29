@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #thread #process #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]]
 
 # 01 — Процессы и потоки
 

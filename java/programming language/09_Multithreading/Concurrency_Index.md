@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #multithreading #hub
 > [!abstract] Навигация
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 # ⚡ Concurrency — Многопоточность
 
@@ -49,3 +49,13 @@
     ↓
 [[11_Locks]]                ← продвинутый уровень
 ```
+
+---
+
+## 🔗 Связанные конспекты
+
+> [!abstract] Смотри также
+> - [[03_Multithreading]] (интервью) — вопросы по многопоточности на собеседовании
+> - [[01_Memory_JVM]] (интервью) — JMM, happens-before, модель памяти
+> - [[11_JVM_Internals]] — устройство JVM и памяти
+> - [[06_Atomic]] — атомарные операции и CAS

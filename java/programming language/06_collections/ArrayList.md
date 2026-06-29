@@ -1,4 +1,4 @@
-> **Теги:** #java #collections #arraylist #динамический-массив #конспект [!abstract] Связи [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> **Теги:** #java #collections #arraylist #динамический-массив #конспект [!abstract] Связи [[main]] | [[main Java]] | [[Collections_Index]]
 
 # ArrayList — Динамический массив
 

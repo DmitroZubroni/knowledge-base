@@ -1,6 +1,6 @@
 > **Теги:** #java #functional #streams #collectors #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Functional_Index]]
+> [[main]] | [[main Java]] | [[Functional_Index]]
 
 # 02 — Stream API
 

@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #reentrantlock #readwritelock #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[04_Synchronized]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[04_Synchronized]]
 
 # 11 — Явные блокировки: ReentrantLock, ReadWriteLock, StampedLock
 

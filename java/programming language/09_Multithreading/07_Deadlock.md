@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #deadlock #livelock #starvation #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[04_Synchronized]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[04_Synchronized]]
 
 # 07 — Deadlock, Livelock, Starvation
 

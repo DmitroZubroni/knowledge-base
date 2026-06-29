@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #modern-java #records #sealed #patterns #конспект
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 ---
 

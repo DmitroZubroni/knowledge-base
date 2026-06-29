@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #race-condition #jmm #visibility #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]]
 
 # 03 — Race Condition (Гонка данных)
 

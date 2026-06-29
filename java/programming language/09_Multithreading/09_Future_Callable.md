@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #future #callable #completablefuture #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[08_ExecutorService]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[08_ExecutorService]]
 
 # 09 — Future, Callable, CompletableFuture
 

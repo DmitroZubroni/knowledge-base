@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #concurrenthashmap #blockingqueue #copyonwrite #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[04_Synchronized]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[04_Synchronized]]
 
 # 10 — Потокобезопасные коллекции
 

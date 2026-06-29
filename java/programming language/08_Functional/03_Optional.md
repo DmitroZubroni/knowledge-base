@@ -1,6 +1,6 @@
 > **Теги:** #java #functional #optional #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Functional_Index]]
+> [[main]] | [[main Java]] | [[Functional_Index]]
 
 # 03 — Optional
 

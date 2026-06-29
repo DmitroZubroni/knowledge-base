@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #deque #двусторонняя-очередь #стек #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> [[main]] | [[main Java]] | [[Collections_Index]]
 
 # Deque — Двусторонняя очередь
 

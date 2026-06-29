@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #volatile #jmm #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[03_Race_Condition]] | [[04_Synchronized]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[03_Race_Condition]] | [[04_Synchronized]]
 
 # 05 — volatile
 

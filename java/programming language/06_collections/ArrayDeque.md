@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #arraydeque #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> [[main]] | [[main Java]] | [[Collections_Index]]
 
 # ArrayDeque — Быстрая реализация Deque
 

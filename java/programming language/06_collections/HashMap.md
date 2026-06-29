@@ -1,4 +1,4 @@
-> **Теги:** #java #collections #hashmap #hashtable #конспект [!abstract] Связи [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> **Теги:** #java #collections #hashmap #hashtable #конспект [!abstract] Связи [[main]] | [[main Java]] | [[Collections_Index]]
 
 # HashMap
 

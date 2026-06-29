@@ -1,6 +1,6 @@
 > **Теги:** #java #functional #lambda #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Functional_Index]]
+> [[main]] | [[main Java]] | [[Functional_Index]]
 
 # 01 — Лямбды и функциональные интерфейсы
 

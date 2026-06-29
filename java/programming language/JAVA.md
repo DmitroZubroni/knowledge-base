@@ -1,13 +1,13 @@
-# ☕ Java — Главная карта тем
+# ☕ Java — Язык программирования
 
-> **Теги:** #java #hub #programming  
+> **Теги:** #java #programming #index
 
 > [!abstract] Навигация
-> [[main]] | [[main Java]]
+> [[main Java]] ← раздел | [[Interviews]] ← собеседования
 
 ---
 
-## 🗺️ Карта файлов
+## 🗺️ Файлы раздела
 
 | Файл | Тема | Ключевые концепции |
 |------|------|---------------------|
@@ -17,66 +17,32 @@
 | [[03_OOP_Advanced]] | Наследование и полиморфизм | extends, interface, abstract |
 | [[04_OOP_Principles]] | Пакеты, static, final, enum | package, import, enum |
 | [[05_Exceptions]] | Исключения | checked/unchecked, try/catch |
-| [[06_Collections]] | Коллекции | List, Set, Map, Queue |
-| [[Collections_Index]] | **Collections (углублённо)** | HashMap internals, коллизии, treeify |
+| [[06_Collections]] | Коллекции (обзор) | List, Set, Map, Queue |
+| [[Collections_Index]] | **Collections (углублённо)** | HashMap internals, treeify |
 | [[07_Generics]] | Обобщения | wildcard, erasure |
 | [[08_Functional]] | Функциональный стиль (обзор) | lambda, Stream, Optional |
-| [[Functional_Index]] | **Functional (углублённо)** | Lambdas, StreamAPI, Optional, MethodRefs |
+| [[Functional_Index]] | **Functional (углублённо)** | Lambdas, StreamAPI, Optional |
 | [[09_Multithreading]] | Многопоточность (обзор) | Thread, synchronized, volatile |
 | [[Concurrency_Index]] | **Concurrency (углублённо)** | ThreadPool, CompletableFuture, Locks |
-| [[10_SOLID]] | SOLID | SRP, OCP, DIP |
-| [[12_Design_Patterns]] | Паттерны GoF (обзор) | Factory, Strategy, Observer |
-| [[Patterns_Index]] | **Patterns (углублённо)** | Creational, Structural, Behavioral + антипаттерны |
+| [[10_SOLID]] | SOLID | SRP, OCP, LSP, ISP, DIP |
+| [[12_Design_Patterns]] | Паттерны GoF | Factory, Strategy, Observer, Proxy |
 | [[13_Modern_Java]] | Java 17–21+ | record, sealed, pattern matching |
 | [[14_JPMS]] | Модули Java | module-info.java, requires, exports |
-| [[15_NIO_Files]] | NIO.2 / Files API | Path, Files, walk, watch service |
-| [[16_Reflection_Annotations]] | Reflection и Annotations | runtime metadata, Spring internals |
-| [[17_Serialization]] | Сериализация | JSON vs Serializable, pitfalls |
+| [[15_NIO_Files]] | NIO.2 / Files API | Path, Files, walk, WatchService |
+| [[16_Reflection_Annotations]] | Reflection и Annotations | runtime metadata |
+| [[17_Serialization]] | Сериализация | JSON vs Serializable |
 
 ---
 
-## 📚 Рекомендуемый порядок изучения
+## 📚 Рекомендуемый порядок
 
 ```
-[[11_JVM_Internals]]
-    ↓
-[[01_Basics]]
-    ↓
-[[02_OOP_Core]]
-    ↓
-[[03_OOP_Advanced]]
-    ↓
-[[04_OOP_Principles]]
-    ↓
-[[05_Exceptions]]
-    ↓
-[[06_Collections]]
-    ↓
-[[Collections_Index]]
-    ↓
-[[07_Generics]]
-    ↓
-[[08_Functional]]
-    ↓
-[[Functional_Index]]
-    ↓
-[[09_Multithreading]]
-    ↓
-[[Concurrency_Index]]
-    ↓
-[[10_SOLID]]
-    ↓
-[[12_Design_Patterns]]
-    ↓
-[[Patterns_Index]]
-    ↓
-[[13_Modern_Java]]
-    ↓
-[[14_JPMS]]
-    ↓
-[[15_NIO_Files]]
-    ↓
-[[16_Reflection_Annotations]]
-    ↓
-[[17_Serialization]]
+[[11_JVM_Internals]] → [[01_Basics]] → [[02_OOP_Core]] → [[03_OOP_Advanced]]
+    → [[04_OOP_Principles]] → [[05_Exceptions]]
+    → [[06_Collections]] → [[Collections_Index]]
+    → [[07_Generics]] → [[08_Functional]] → [[Functional_Index]]
+    → [[09_Multithreading]] → [[Concurrency_Index]]
+    → [[10_SOLID]] → [[12_Design_Patterns]]
+    → [[13_Modern_Java]] → [[14_JPMS]] → [[15_NIO_Files]]
+    → [[16_Reflection_Annotations]] → [[17_Serialization]]
 ```

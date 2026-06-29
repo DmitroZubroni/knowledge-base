@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #thread #lifecycle #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]]
 
 # 02 — Жизненный цикл потока
 

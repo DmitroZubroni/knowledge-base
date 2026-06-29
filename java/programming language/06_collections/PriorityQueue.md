@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #priorityqueue #куча #heap #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> [[main]] | [[main Java]] | [[Collections_Index]]
 
 # PriorityQueue — Очередь с приоритетом
 

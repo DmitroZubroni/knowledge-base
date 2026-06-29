@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #synchronized #monitor #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[03_Race_Condition]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[03_Race_Condition]]
 
 # 04 — synchronized и монитор
 

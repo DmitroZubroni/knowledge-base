@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #patterns #gof #middle #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 ---
 
@@ -315,3 +315,13 @@ Template Method  → JdbcTemplate
 Facade           → @Service orchestration
 ❌ Service Locator → ✅ Constructor DI
 ```
+
+---
+
+## 🔗 Связанные конспекты
+
+> [!abstract] Смотри также
+> - [[15_Patterns]] (интервью) — паттерны GoF на собеседовании
+> - [[10_SOLID]] — принципы, которые лежат в основе паттернов
+> - [[Spring_Core]] — Spring реализует Singleton, Factory, Proxy, Template Method
+> - [[16_Microservices]] (интервью) — архитектурные паттерны микросервисов

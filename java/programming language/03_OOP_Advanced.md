@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #oop #inheritance #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 ---
 

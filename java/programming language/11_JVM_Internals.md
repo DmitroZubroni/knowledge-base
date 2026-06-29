@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #jvm #internals #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 ---
 
@@ -856,3 +856,12 @@ GC tuning алгоритм:
   4. Для G1: MaxGCPauseMillis=200, избегай Full GC
   5. Нужны паузы < 10ms → переходи на ZGC
 ```
+
+---
+
+## 🔗 Связанные конспекты
+
+> [!abstract] Смотри также
+> - [[01_Memory_JVM]] — вопросы по JVM и памяти на собеседовании
+> - [[03_Multithreading]] (интервью) — JMM и многопоточность связаны с памятью JVM
+> - [[09_Multithreading]] — практическое многопоточное программирование

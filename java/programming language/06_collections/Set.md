@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #set #hashset #treeset #linkedhashset #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> [[main]] | [[main Java]] | [[Collections_Index]]
 
 # Set — Множество
 

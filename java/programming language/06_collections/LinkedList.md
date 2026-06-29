@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #linkedlist #связанный-список #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> [[main]] | [[main Java]] | [[Collections_Index]]
 
 # LinkedList — Связанный список
 

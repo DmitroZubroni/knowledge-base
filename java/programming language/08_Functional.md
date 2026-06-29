@@ -3,7 +3,7 @@
 > **Теги:** #java #programming #lambda #streams #конспект  
 
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 ---
 

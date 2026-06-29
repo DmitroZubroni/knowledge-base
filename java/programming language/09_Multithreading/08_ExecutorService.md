@@ -1,6 +1,6 @@
 > **Теги:** #java #concurrency #executorservice #threadpool #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Concurrency_Index]] | [[01_Process_Thread]]
+> [[main]] | [[main Java]] | [[Concurrency_Index]] | [[01_Process_Thread]]
 
 # 08 — ExecutorService и пул потоков
 

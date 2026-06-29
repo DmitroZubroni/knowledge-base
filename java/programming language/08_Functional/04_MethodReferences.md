@@ -1,6 +1,6 @@
 > **Теги:** #java #functional #method-references #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Functional_Index]]
+> [[main]] | [[main Java]] | [[Functional_Index]]
 
 # 04 — Ссылки на методы (Method References)
 

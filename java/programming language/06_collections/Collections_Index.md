@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #hub #layer-mid
 > [!abstract] Навигация
-> [[main]] | [[main Java]] | [[JAVA]]
+> [[main]] | [[main Java]]
 
 # 📦 Collections — Углублённый раздел
 
@@ -38,3 +38,13 @@
 Очереди:
   [[Queue]] → [[Deque]] → [[ArrayDeque]] → [[PriorityQueue]]
 ```
+
+---
+
+## 🔗 Связанные конспекты
+
+> [!abstract] Смотри также
+> - [[02_Collections]] (интервью) — вопросы по Collections на собеседовании
+> - [[08_HashTable]] (algorithms) — алгоритмическая основа HashMap: хэширование, коллизии
+> - [[09_Trees]] (algorithms) — основа TreeMap / TreeSet (красно-чёрное дерево)
+> - [[07_Generics]] — Generics необходимы для понимания типизации коллекций

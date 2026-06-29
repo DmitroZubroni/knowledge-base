@@ -1,6 +1,6 @@
 > **Теги:** #java #collections #treemap #красно-чёрное-дерево #конспект
 > [!abstract] Связи
-> [[main]] | [[main Java]] | [[JAVA]] | [[Collections_Index]]
+> [[main]] | [[main Java]] | [[Collections_Index]]
 
 # TreeMap — отсортированная Map
 

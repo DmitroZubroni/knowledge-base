@@ -584,3 +584,13 @@ pdfRenderer.getIfAvailable(defaultFn) // default supplier если нет
 pdfRenderer.ifAvailable(consumer)     // выполнить если есть
 pdfRenderer.stream()                  // все реализации как Stream
 ```
+
+---
+
+## 🔗 Связанные конспекты
+
+> [!abstract] Смотри также
+> - [[09_Spring]] (интервью) — IoC, DI, бины и контейнер на собеседовании
+> - [[10_SpringBoot]] (интервью) — Auto-configuration, Starter на собеседовании
+> - [[12_Design_Patterns]] — Spring реализует Singleton, Factory, Proxy, Template Method
+> - [[16_Reflection_Annotations]] — внутренний механизм Spring IoC основан на Reflection

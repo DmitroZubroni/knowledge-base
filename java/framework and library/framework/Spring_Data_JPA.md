@@ -367,3 +367,14 @@ JpaSpecificationExecutor           → Specs
 Flyway + ddl-auto: validate        → prod
 @Lock(PESSIMISTIC_WRITE)          → SELECT FOR UPDATE
 ```
+
+---
+
+## 🔗 Связанные конспекты
+
+> [!abstract] Смотри также
+> - [[12_JPA_Hibernate]] (интервью) — Entity, Lazy/Eager, N+1, кэши на собеседовании
+> - [[11_Transactional]] (интервью) — @Transactional, уровни изоляции на собеседовании
+> - [[13_SQL_DB]] (интервью) — SQL и индексы в контексте JPA-запросов
+> - [[Hibernate]] — ORM под капотом Spring Data JPA
+> - [[main SQL DB]] — реляционные базы данных

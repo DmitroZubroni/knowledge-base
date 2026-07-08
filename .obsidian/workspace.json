@@ -50,9 +50,19 @@
               "icon": "lucide-file",
               "title": "Итог общения"
             }
+          },
+          {
+            "id": "c2a6f324184f00f6",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -214,8 +224,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "bd055f4bd8c03add",
+  "active": "c2a6f324184f00f6",
   "lastOpenFiles": [
+    "Итог общения.md",
+    "пост.md",
+    "Untitled",
+    "interviews/architecture/14_OOP_SOLID.md",
+    "interviews/architecture/15_Patterns.md",
     "java/programming language/09_Multithreading/Concurrency_Index.md",
     "java/programming language/09_Multithreading/11_Locks.md",
     "java/programming language/09_Multithreading/10_Concurrent_Collections.md",
@@ -238,15 +253,10 @@
     "java/programming language/06_collections/Queue.md",
     "java/programming language/06_collections/PriorityQueue.md",
     "java/programming language/06_collections/LinkedList.md",
-    "java/programming language/06_collections/LinkedHashMap.md",
-    "java/programming language/06_collections/HashMap.md",
-    "java/programming language/06_collections/Deque.md",
-    "java/programming language/06_collections/Collections_Index.md",
     "java/programming language/09_Multithreading",
     "java/programming language/08_Functional",
     "java/programming language/06_collections",
     "java/programming language",
-    "Untitled",
     "interviews/java-core/files",
     "java/framework and library/framework/sed8xsXrb",
     "java/framework and library/framework/sedzsndSG",

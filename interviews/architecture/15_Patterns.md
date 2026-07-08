@@ -1,6 +1,6 @@
 > **Теги:** #interviews #architecture #patterns #gof #конспект
 > [!abstract] Связи
-> [[main]] | [[Interviews]] | [[Patterns_Index]]
+> [[main]] | [[Interviews]] 
 
 # Design Patterns — Вопросы на собесе
 
